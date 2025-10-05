@@ -1,0 +1,254 @@
+ <!DOCTYPE html>
+<html lang="pl">
+<head>
+   <title>Sukulenty Tatybuby</title>
+   <link rel="icon" type="image/x-icon" href="../IMG/kaktus.ico">   
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8"> 
+
+   <style>
+    @media screen and (max-width: 768px) {
+  .container1 {
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  #headernav {
+    display: flex;
+    flex-direction: row; /* układ w wierszu */
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 0;
+  }
+
+  img.nav {
+    width: 32px;
+    height: 32px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  .p_Normal {
+    margin-left: 0;
+    padding: 1em;
+    font-size: 1em;
+  }
+
+  figcaption {
+    text-align: center;
+    font-size: 0.9em;
+  }
+}
+
+    body {
+      background-image: url('Logo Icon Rev 0.ico');
+      background-repeat: no-repeat;
+      background-attachment: fixed;  
+      background-size: cover;
+    }
+  </style>
+
+   <style> 
+      html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f0e6; /* jasny beż */
+      color: #2e4d2c; /* ciemna zieleń */
+    }
+
+    #header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #3b6f3c; /* głęboka zieleń */
+      z-index: 99;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    #headerhead {
+      padding: 10px;
+      min-height: 50px;
+      background: #4f7f4f; /* oliwkowy odcień */
+      color: #fff;
+      opacity: 0.95;
+    }
+
+    #headernav {
+      float: right;
+      display: flex;
+      gap: 8px;
+    }
+    img {
+       border-radius: 6px;
+    }
+
+    img.nav {
+      width: 26px;
+      height: 26px;
+      border: none;
+    }
+
+    #content {
+      margin-top: 80px;
+      padding: 20px;
+    }
+
+      img.nav { width: 0.2708in; height: 0.2708in; border: none; }
+      #callout-table, #overview-table {display:block; position:relative; top:0; left:0;}
+      #callout-icon {display:block; position:absolute; top:-0.1146in; left:-0.1146in;}
+      #callout-icon-flag {display:block; position:absolute; top:-0.1146in; left:-0.0833in;}
+      #callout-table a {text-decoration: none; color: blue;}
+      #callout-table a:visited {text-decoration: none; color: blue;}
+      #overview-table a {text-decoration: none; color: black;}
+      #overview-table a:visited {text-decoration: none; color: black;}
+      #callout-table a:hover, #overview-table a:hover {text-decoration: underline;}       
+      p.crumbs { font-size: 10pt; margin: 0 0 0.0625in 0 }      
+      p.crumbs a { text-decoration: none; color: #FFFFFF }      
+      #switchtoggles { width:100%; text-align: right; padding: 0 0.0208in 0 0; font-size: 10pt; } 
+      .sync-toc { color: #FFFFFF; font-size: 10pt; font-weight: bold; display: none; }
+      .sync-toc a { color: #FFFFFF; text-decoration: none; font-weight: bold;}
+      .sync-toc a:visited { color: #FFFFFF; }
+      .sync-toc a:hover { text-decoration: underline; }
+      a.hmanchor { display: inline-block; margin-top: 4em; padding-top: 4em }	  
+      
+   </style>
+   
+  <style>
+  /* Główne style */
+.grid-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  gap: 1em;
+  margin: auto;
+  padding: 25px 0;
+}
+
+.container1 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+img {
+  max-width: 95%;
+  max-height: 95%;
+  margin: auto;
+  padding: 1px;
+}
+
+.text {
+  padding-left: 1px;
+}
+
+/* Responsywność dla ekranów poniżej 768px */
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 100%;
+    padding: 15px;
+  }
+
+  .container1 {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .text {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+ </style>
+   </style>
+   <style> 
+    a:visited {
+     color: blue;    
+     } 
+   </style>     
+
+</head>
+<body>
+
+<div id="header">
+   <div id="headerhead">  
+    <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="../index.html">Kaktusy i Sukulenty</a>&nbsp;&gt;</p>
+     <div id="headernav">
+      <a href="../kaktusy/index.html"
+       onmouseover="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev_orange.png'"
+       onmouseout="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev.png'"><img class="nav" id="prev" name="prev"  
+       src="../IMG/hm_btn_navigate_prev.png" alt="Previous page"></a>
+      <a href="../index.html" 
+        onmouseover="document.getElementById('main').src = '../IMG/hm_btn_navigate_top_orange.png'" 
+        onmouseout="document.getElementById('main').src = '../IMG/hm_btn_navigate_top.png'"><img class="nav" id="main" name="main" 
+        src="../IMG/hm_btn_navigate_top.png" alt="main"></a>
+      <a href="../sukulenty/index.html"
+        onmouseover="document.getElementById('next').src = '../IMG/hm_btn_navigate_next_orange.png'" 
+        onmouseout="document.getElementById('next').src ='../IMG/hm_btn_navigate_next.png'">
+        <img class="nav" id="next" name="next" src="../IMG/hm_btn_navigate_next.png" alt="Next page"></a>
+    </div>
+    <p><span style="font-size: 16pt; font-weight: bold;">Sukulenty</span></p>
+
+  </div>
+ 
+  <div id="switchtoggles"></div>
+</div>  
+<div id="content">     
+     
+    <div class="grid-container">
+      <div>
+        <figure>
+        <a href="agave-americana.html" title="Agave-americana"><img src="IMG/agave-americana.png"  
+          alt="Agave-americana" width="400" height="400"></a>  
+        <figcaption><i style="font-size: 14pt;">Agave americana</i></figcaption>
+        </figure>  
+      </div>     
+      <div>
+        <figure>
+        <a href="echeveria-lilacina.html" title="Echeveria-lilacina"><img src="IMG/echeveria-lilacina.png"  
+          alt="gymnocalycium-horstii" width="400" height="400"></a> 
+        <figcaption><i style="font-size: 14pt;">Echeveria lilacina</i></figcaption>  
+        </figure>     
+      </div>      
+      <div>
+        <figure>
+        <a href="aloe-aristata.html" title="Aloe aristata"><img src="IMG/Aloe-aristata.png"  
+          alt="aloe-aristata" width="400" height="400"></a> 
+        <figcaption><i style="font-size: 14pt;">Aloe aristata</i></figcaption>  
+        </figure>     
+      </div>      
+    </div> 
+    <div class="grid-container">
+      <div>
+        <figure>
+        <a href="euphorbia-polygona.html" title="Euphorbia polygona"><img src="IMG/euphorbia-polygona.png"  
+          alt="Euphorbia polygona" width="400" height="400"></a>  
+        <figcaption><i style="font-size: 14pt;">Euphorbia polygona</i></figcaption>
+        </figure>  
+      </div>
+      <div>
+        <figure>
+        <a href="lapidaria-margaretae.html" title="Lapidaria margaretae"><img src="IMG/lap1.jpg"  
+          alt="Lapidaria margaretae" width="400" height="400"></a>  
+        <figcaption><i style="font-size: 14pt;">Lapidaria margaretae</i></figcaption>
+        </figure>  
+      </div>
+    </div>      
+</div>
+
+<script src="kaktusy.js"></script>
+</body>
+</html>

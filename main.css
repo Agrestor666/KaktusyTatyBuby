@@ -1,0 +1,236 @@
+ html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f0e6;
+      color: #2e4d2c;
+  }
+
+  #header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px; /* Stała wysokość */
+  background: #3b6f3c;
+  z-index: 99;
+  /*box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background: linear-gradient(to right, #3b6f3c, #4f7f4f);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+main {
+  padding-top: 60px; /* lub dokładnie tyle, ile ma #header */
+  margin-top: 60px;
+}
+#content {
+  margin-top: 50px; /* Dopasowane do wysokości headera */
+  padding: 5px;
+}
+  .header-top {
+      /*padding: 2px;*/
+      min-height: 5px;
+      background: #4f7f4f;
+      color: #fff;
+      opacity: 0.95;
+      border-radius: 8px;
+      padding: 6px 12px;
+    }
+ 
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    nav img {
+      width: 20px;
+      height: 20px;
+      border: none;
+    }   
+    main {      
+      padding: 10px;
+    }
+
+    /* Układ siatki dla kontenera galerii */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem; /* odstęp między obrazami */
+  padding: 1rem; /* odstęp od krawędzi kontenera */
+  justify-items: center;
+}
+
+.container a {
+  display: block;
+  width: 100%;
+  max-width: 100%; /* obraz wypełnia całą kolumnę */
+  position: relative;
+  text-decoration: none;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.container a:hover img {
+  transform: scale(1.03);
+}
+
+.hover-caption::after {
+  content: attr(data-caption);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #4f7f4f;
+  color: #fff;
+  padding: 0.5em;
+  font-size: 0.9em;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.hover-caption:hover::after {
+  opacity: 1;
+}
+.container img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+    
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      nav img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  .container a {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .container img {
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+  @media print {
+      header {
+        position: relative;
+        box-shadow: none;
+      }
+
+      .header-top {
+        background: none;
+        color: #000;
+      }
+
+      nav, #switchtoggles {
+        display: none;
+      }
+
+      main {
+        margin-top: 0;
+      }
+
+      span.f_Heading1 {
+        color: black;
+      }
+  }
+  .synology-gallery {  
+  text-align: center;
+  background: #f5f2ed;
+  border-radius: 12px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);    
+  overflow: hidden;
+}
+
+.synology-gallery a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.gallery-preview {
+  padding: 1rem;  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  box-sizing: border-box; 
+}
+
+.gallery-preview img {
+  width: 100%;
+  border-radius: 8px;  
+  transition: transform 0.3s ease;
+  max-height: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.gallery-preview img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-caption {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #333;
+  padding-bottom: 1rem;
+}
+.info-tile {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  background: linear-gradient(135deg, #4f7f4f, #3b6f3c);
+  color: #fff;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1rem 0;
+  opacity: 0.95;
+}
+
+.info-tile:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.tile-content {
+  font-size: 1.1rem;
+  font-weight: bold;
+  line-height: 1.4;
+}

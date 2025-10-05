@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+   <title>Kaktusy Tatybuby</title>
+   <link rel="icon" type="image/x-icon" href="../IMG/kaktus.ico">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8">
+   <link href="kaktusy.css" rel="stylesheet" />
+
+   <style>
+    @media screen and (max-width: 768px) {
+  .container1 {
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  #headernav {
+    display: flex;
+    flex-direction: row; /* układ w wierszu */
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 0;
+  }
+
+  img.nav {
+    width: 32px;
+    height: 32px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  .p_Normal {
+    margin-left: 0;
+    padding: 1em;
+    font-size: 1em;
+  }
+
+  figcaption {
+    text-align: center;
+    font-size: 0.9em;
+  }
+}
+
+    body {
+      background-image: url('Logo Icon Rev 0.ico');
+      background-repeat: no-repeat;
+      background-attachment: fixed;  
+      background-size: cover;
+    }
+  </style>
+
+   <style> 
+      html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f0e6; /* jasny beż */
+      color: #2e4d2c; /* ciemna zieleń */
+    }
+
+    #header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #3b6f3c; /* głęboka zieleń */
+      z-index: 99;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    #headerhead {
+      padding: 10px;
+      min-height: 50px;
+      background: #4f7f4f; /* oliwkowy odcień */
+      color: #fff;
+      opacity: 0.95;
+    }
+
+    #headernav {
+      float: right;
+      display: flex;
+      gap: 8px;
+    }
+    img {
+       border-radius: 6px;
+    }
+
+    img.nav {
+      width: 26px;
+      height: 26px;
+      border: none;
+    }
+
+    #content {
+      margin-top: 80px;
+      padding: 20px;
+    }
+
+      img.nav { width: 0.2708in; height: 0.2708in; border: none; }
+      #callout-table, #overview-table {display:block; position:relative; top:0; left:0;}
+      #callout-icon {display:block; position:absolute; top:-0.1146in; left:-0.1146in;}
+      #callout-icon-flag {display:block; position:absolute; top:-0.1146in; left:-0.0833in;}
+      #callout-table a {text-decoration: none; color: blue;}
+      #callout-table a:visited {text-decoration: none; color: blue;}
+      #overview-table a {text-decoration: none; color: black;}
+      #overview-table a:visited {text-decoration: none; color: black;}
+      #callout-table a:hover, #overview-table a:hover {text-decoration: underline;}       
+      p.crumbs { font-size: 10pt; margin: 0 0 0.0625in 0 }      
+      p.crumbs a { text-decoration: none; color: #FFFFFF }      
+      #switchtoggles { width:100%; text-align: right; padding: 0 0.0208in 0 0; font-size: 10pt; } 
+      .sync-toc { color: #FFFFFF; font-size: 10pt; font-weight: bold; display: none; }
+      .sync-toc a { color: #FFFFFF; text-decoration: none; font-weight: bold;}
+      .sync-toc a:visited { color: #FFFFFF; }
+      .sync-toc a:hover { text-decoration: underline; }
+      a.hmanchor { display: inline-block; margin-top: 4em; padding-top: 4em }	  
+      
+   </style>
+   
+  <style>
+  /* Główne style */
+.grid-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  gap: 1em;
+  margin: auto;
+  padding: 10px 0;
+}
+
+.container1 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+
+img {
+  max-width: 98%;
+  max-height: 98%;
+  margin: auto;
+  padding: 1px;
+}
+
+.text {
+  padding-left: 1px;
+}
+
+/* Responsywność dla ekranów poniżej 768px */
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 100%;
+    padding: 10px;
+  }
+
+  .container1 {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .text {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+ </style>
+   </style>
+   <style> 
+    a:visited {
+     color: blue;    
+     } 
+   </style>     
+
+</head>
+<body>
+
+<div id="header">
+   <div id="headerhead">  
+    <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="../index.html">Kaktusy i Sukulenty</a>&nbsp;&gt;</p>
+     <div id="headernav">
+      <a href="../kaktusy/index.html"
+       onmouseover="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev_orange.png'"
+       onmouseout="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev.png'"><img class="nav" id="prev" name="prev"  
+       src="../IMG/hm_btn_navigate_prev.png" alt="Previous page"></a>
+      <a href="../index.html" 
+        onmouseover="document.getElementById('main').src = '../IMG/hm_btn_navigate_top_orange.png'" 
+        onmouseout="document.getElementById('main').src = '../IMG/hm_btn_navigate_top.png'"><img class="nav" id="main" name="main" 
+        src="../IMG/hm_btn_navigate_top.png" alt="main"></a>
+      <a href="../sukulenty/index.html"
+        onmouseover="document.getElementById('next').src = '../IMG/hm_btn_navigate_next_orange.png'" 
+        onmouseout="document.getElementById('next').src ='../IMG/hm_btn_navigate_next.png'">
+        <img class="nav" id="next" name="next" src="../IMG/hm_btn_navigate_next.png" alt="Next page"></a>
+    </div>
+    <p><span style="font-size: 16pt; font-weight: bold;">Kaktusy</span></p>
+
+  </div>
+  <!-- The following code displays Expand All/Collapse All links  below the header in topics containing toggles -->
+  <div id="switchtoggles"></div>
+</div>  
+<div id="content">
+     <!--ZOOMRESTART-->
+     <br>
+     <div class="grid-container">
+
+      <div>
+        <figure>
+        <a href="gymnocalycium-baldianum.html" title="Gymnocalycium-Baldianum"><img src="IMG/gymnocalycium-baldianum.png"  
+          alt="gymnocalycium-baldianum" width="400" height="400"></a>  
+        <figcaption><i style="font-size: 14pt;">Gymnocalycium Baldianum</i></figcaption>
+        </figure>  
+      </div>
+      
+      <div>
+        <figure>
+        <a href="gymnocalycium-horstii.html" title="Gymnocalycium-Horstii"><img src="IMG/gymnocalycium-horstii.png"  
+          alt="gymnocalycium-horstii" width="400" height="400"></a> 
+        <figcaption><i style="font-size: 14pt;">Gymnocalycium Horstii</i></figcaption>  
+        </figure>     
+      </div>
+      
+      <div>
+        <figure>
+        <a href="coryphantha-elephantidens.html" title="Coryphantha-Elephantidens"><img src="IMG/coryphantha-elephantidens.png"  
+          alt="coryphantha-elephantidens" width="400" height="400"></a>
+        <figcaption><i style="font-size: 14pt;">Coryphantha Elephantidens</i></figcaption>  
+        </figure>    
+      </div>
+    </div>
+    <div class="grid-container">
+      <div>
+        <figure>
+        <a href="echinopsis-subdenudata.html" title="Echinopsis Subdenudata"><img src="IMG/Echinopsis-Subdenudata.png"  
+          alt="Echinopsis Subdenudata" width="400" height="400"></a>
+        <figcaption><i style="font-size: 14pt;">Echinopsis Subdenudata</i></figcaption>  
+        </figure>    
+      </div>
+
+      <div>
+        <figure>
+        <a href="cylindropuntia-imbricata.html" title="Cylindropuntia imbricata"><img src="IMG/cylindropuntia-imbricata.png"  
+          alt="Cylindropuntia imbricata" width="400" height="400"></a>
+        <figcaption><i style="font-size: 14pt;">Cylindropuntia imbricata</i></figcaption>  
+        </figure>    
+      </div>
+      <div>
+        <figure>
+        <a href="austrocylindropuntia-subulata.html" title="Austrocylindropuntia Subulata"><img src="IMG/austrocylindropuntia-subulata.png"  
+          alt="Austrocylindropuntia Subulata" width="400" height="400"></a>
+        <figcaption><i style="font-size: 14pt;">Austrocylindropuntia Subulata</i></figcaption>  
+        </figure>    
+      </div>
+    </div>
+      <div class="grid-container">
+        <div>
+          <figure>
+          <a href="echinofossulocactus-multicostatus.html" title="Echinofossulocactus multicostatus"><img src="IMG/echinofossulocactus-multicostatus.png"  
+            alt="Echinofossulocactus" width="400" height="400"></a>
+          <figcaption><i style="font-size: 14pt;">Echinofossulocactus multicostatus</i></figcaption>  
+          </figure>    
+        </div>  
+        <div>
+          <figure>
+          <a href="pilosocereus-azureus.html" title="Pilosocereus Azureus"><img src="IMG/Pilosocereus-azureus.png"  
+            alt="Pilosocereus Azureus" width="400" height="400"></a>
+          <figcaption><i style="font-size: 14pt;">Pilosocereus azureus</i></figcaption>  
+          </figure>    
+        </div>
+        <div>
+          <figure>
+          <a href="mammillaria-bombycina.html" title="Mammillaria bombycina"><img src="IMG/Mammillaria-bombycina.png"  
+            alt="mamillaria" width="400" height="400"></a>
+          <figcaption><i style="font-size: 14pt;">Mammillaria bombycina</i></figcaption>  
+          </figure>    
+        </div>
+      </div>
+    </div>
+    <div class="grid-container">
+      <div>
+        <figure>
+        <a href="neoporteria-senilis.html" title="Neoporteria Senilis"><img src="IMG/neoporteria-senilis.png"  
+          alt="Neoporteria Villosa/Senilis" width="400" height="400"></a>
+        <figcaption><i style="font-size: 14pt;">Neoporteria senilis</i></figcaption>  
+        </figure>    
+      </div>  
+      <div>
+        <figure>
+        <a href="mammillaria-microhelia.html" title="Mammillaria microhelia"><img src="IMG/mammillaria-microhelia.jpg"  
+          alt="Mammillaria microhelia" width="400" height="400"></a>
+        <figcaption><i style="font-size: 14pt;">Mammillaria microhelia</i></figcaption>  
+        </figure>    
+      </div> 
+
+      
+    </div>
+      
+</div>
+
+<script src="kaktusy.js"></script>
+</body>
+</html>

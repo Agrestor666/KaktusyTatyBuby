@@ -1,0 +1,43 @@
+.container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 1em;                       
+    }
+    .container img {      
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #d9d2c3; /* delikatna ramka w kolorze tła */
+    }
+    
+    .hover-caption {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hover-caption::after {
+      content: attr(data-caption);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #4f7f4f;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-size: 0.95rem;
+      font-weight: bold;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease 0.6s, transform 0.3s ease 0.6s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+
+    .hover-caption:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-6px);
+    }
