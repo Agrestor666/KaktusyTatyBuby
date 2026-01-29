@@ -234,4 +234,38 @@ p em {
   50%  { transform: translateX(6px); }
   100% { transform: translateX(0); }
 }
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* NOWE: żeby poster nie był „za duży” na desktopie */
+}
+
+
+/* Telefony */
+@media only screen and (max-width: 600px) {
+  .video-wrapper {
+    max-width: 100%;
+    margin: 0;
+    padding-bottom: 56.25%;
+  }
+
+  .video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* jak było */
+  }
+}
+
 }

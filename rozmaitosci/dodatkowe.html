@@ -97,7 +97,7 @@
     <em>💡 Wskazówka:</em> Zawsze wybieraj składniki przeznaczone do ogrodnictwa lub akwarystyki. Produkty z marketów budowlanych mogą być tańsze, ale często zawierają zanieczyszczenia, które szkodzą roślinom pustynnym.
   </p>
 </div>
-<h3><span class="robak">🐛</span>Szkodniki kaktusów domowych i tarasowych<span class="robak">🐛</span></h2>
+<h3><span class="robak">🐛</span>Szkodniki kaktusów domowych i tarasowych<span class="robak">🐛</span></h3>
 <p>Kaktusy, choć odporne na suszę i słońce, bywają podatne na ataki szkodników — zwłaszcza w warunkach domowych i na tarasach. Poniżej przedstawiamy najczęstsze zagrożenia oraz sposoby ich zwalczania:</p>
 
 <ul>
@@ -166,9 +166,69 @@
   </ul>
   <p>Pamiętaj, aby przed zamówieniem sprawdzić koszty i warunki wysyłki do Polski oraz dostępność wybranych gatunków.</p>
 </section>
+<h2>🌵 Kaktusy – Sekrety kwitnienia 🌼</h2>
 
+  <div class="video-wrapper">
+  <video
+    controls
+    preload="metadata"
+    poster="IMG/miniaturka.png"
+    playsinline
+    webkit-playsinline
+  >
+    <source
+      src="https://storage.googleapis.com/cactus-knowledge/video/Kaktusy__Sekrety_Kwitnienia.mp4"
+      type="video/mp4"
+    >
+    Twoja przeglądarka nie obsługuje wideo HTML5.
+  </video>
+</div>
+<h2>🪴 Zasady przesadzania kaktusów 🌱</h2>
 
-
+  <div class="video-wrapper">
+  <video
+    controls
+    preload="metadata"
+    poster="IMG/miniaturka2.png"
+    playsinline
+    webkit-playsinline
+  >
+    <source
+      src="https://storage.googleapis.com/cactus-knowledge/video/Przesadzanie_Kaktus%C3%B3w.mp4"
+      type="video/mp4"
+    >
+    Twoja przeglądarka nie obsługuje wideo HTML5.
+  </video>
+</div>
 </main>
 </body>
+<link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+<script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+<df-messenger
+  location="eu"
+  project-id="kaktus-chatbot"
+  agent-id="3e0c8e73-4bf3-42ba-beb8-7e9604ffa66b"
+  language-code="pl"
+  max-query-length="-1">
+  <df-messenger-chat-bubble
+    chat-title="Kolczak">
+  </df-messenger-chat-bubble>
+</df-messenger>
+<!-- Listener -->
+<script> document.querySelector('df-messenger') .addEventListener('df-response-received',
+ e => { console.log(e.detail.response.queryResult.responseMessages); }); </script>
+
+<style>
+  df-messenger {
+    z-index: 999;
+    position: fixed;
+    --df-messenger-font-color: #000;
+    --df-messenger-font-family: Google Sans;
+    --df-messenger-chat-background: #f3f6fc;
+    --df-messenger-message-user-background: #d3e3fd;
+    --df-messenger-message-bot-background: #fff;
+    bottom: 16px;
+    right: 16px;
+  }
+</style>
 </html>
