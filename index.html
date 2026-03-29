@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta name="google-site-verification" content="pxA_hU9_6n0cG6zB8rlCipotTdJZovNMbLhDWdICiXQ" />
   <meta charset="UTF-8">
-  <title>Kaktusy i Sukulenty</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="pxA_hU9_6n0cG6zB8rlCipotTdJZovNMbLhDWdICiXQ">
+  <title>Kaktusy i Sukulenty</title>
   <link rel="icon" href="IMG/kaktus.ico" type="image/x-icon">
+  <link rel="canonical" href="https://kaktusy-i-sukulenty.com/">
   <link rel="stylesheet" href="main.css">
-  <link rel="canonical" href="https://kaktusy-i-sukulenty.com/" />  
 </head>
 <body>
   <header id="header">
     <div class="header-top">
-      <p><span style="font-size: 16pt; font-weight: bold;">🌵 Kaktusy i Sukulenty</span></p>
+      <h1 class="site-title">🌵 Kaktusy i Sukulenty</h1>
     </div>
   </header>
-  <main>    
+
+  <main>
     <div class="container">
       <a href="kaktusy/index.html" class="hover-caption" data-caption="🌵 Kaktusy – Królowie pustyni">
         <img src="IMG/Kaktusy.png" alt="Kaktusy">
       </a>
       <a href="sukulenty/index.html" class="hover-caption" data-caption="🌿 Sukulenty – Mistrzowie magazynowania wody">
         <img src="IMG/Sukulenty.png" alt="Sukulenty">
-      </a>      
-    </div>    
-    <div class="synology-gallery">
-      <a href="http://ptracz.quickconnect.to/mo/sharing/qgRyVKzSM" target="_blank">
+      </a>
+    </div>
+
+    <section class="synology-gallery" aria-label="Podgląd galerii zdjęć">
+      <a href="http://ptracz.quickconnect.to/mo/sharing/qgRyVKzSM" target="_blank" rel="noopener noreferrer">
         <div class="gallery-preview">
           <img src="IMG/kol1.png" alt="Kaktus 1">
           <img src="IMG/kol2.png" alt="Sukulenty 1">
@@ -35,12 +37,35 @@
         </div>
         <p class="gallery-caption">📸 Otwórz pełną galerię</p>
       </a>
-    </div> 
-    <a href="./rozmaitosci/dodatkowe.html" class="info-tile">
-      <div class="tile-content">🧪 Rozmaitości<br><small>Ziemia, nawozy, zakupy</small></div>
-    </a>  
-  </main>  
+    </section>
 
-<script src="main.js"></script>
+    <a href="./rozmaitosci/dodatkowe.html" class="info-tile">
+      <div class="tile-content">
+        🧪 Rozmaitości<br>
+        <small>Ziemia, nawozy, zakupy</small>
+      </div>
+    </a>
+  </main>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const header = document.getElementById("header");
+      if (!header) return;
+
+      const setOffset = () => {
+        const h = Math.ceil(header.getBoundingClientRect().height);
+        root.style.setProperty("--header-offset", `${h}px`);
+      };
+
+      const schedule = () => requestAnimationFrame(setOffset);
+
+      window.addEventListener("load", schedule, { passive: true });
+      window.addEventListener("resize", schedule, { passive: true });
+
+      // Start immediately (in case of bfcache / fast paint)
+      schedule();
+    })();
+  </script>
 </body>
 </html>

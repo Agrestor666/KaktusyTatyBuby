@@ -1,132 +1,255 @@
- html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f0e6;
-      color: #2e4d2c;
-  }
+/* Strona główna — zmienne i reset */
+:root {
+  --color-bg: #f5f0e6;
+  --color-bg-card: #f5f2ed;
+  --color-text: #2e4d2c;
+  --color-text-muted: #333;
+  --color-green-dark: #3b6f3c;
+  --color-green-mid: #4f7f4f;
+  --color-header-text: #fff;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 6px 14px rgba(0, 0, 0, 0.2);
+  --radius-sm: 8px;
+  --radius-lg: 12px;
+  --header-height: 50px;
+  /* Realny offset dla fixed header (ustawiany też dynamicznie w JS na stronie głównej) */
+  --header-offset: 60px;
+  --font-ui: "Segoe UI", sans-serif;
+}
 
-  #header {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-ui);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Nagłówek */
+#header {
   position: fixed;
   top: 0;
-  width: 100%;
-  height: 50px; /* Stała wysokość */
-  background: #3b6f3c;
+  left: 0;
   z-index: 99;
-  /*box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-  background: linear-gradient(to right, #3b6f3c, #4f7f4f);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: auto;
+  min-height: var(--header-height);
+  background: linear-gradient(to right, var(--color-green-dark), var(--color-green-mid));
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
 }
+
+.header-top {
+  display: flex;
+  align-items: center;
+  min-height: 100%;
+  padding: 4px 10px;
+  color: var(--color-header-text);
+  background: var(--color-green-mid);
+  opacity: 0.95;
+  border-radius: var(--radius-sm);
+}
+
+.site-title {
+  margin: 0;
+  /* Stabilny rozmiar na telefonie (nie rośnie przez rem / skalowanie) */
+  font-size: clamp(18px, 5vw, 22px);
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+/* Główna treść — jeden blok zamiast konkurujących reguł */
 main {
-  padding-top: 60px; /* lub dokładnie tyle, ile ma #header */
-  margin-top: 60px;
+  margin: 0;
+  padding: calc(var(--header-offset) + 10px) 10px 10px;
 }
-#content {
-  margin-top: 50px; /* Dopasowane do wysokości headera */
-  padding: 5px;
-}
-  .header-top {
-      /*padding: 2px;*/
-      min-height: 5px;
-      background: #4f7f4f;
-      color: #fff;
-      opacity: 0.95;
-      border-radius: 8px;
-      padding: 6px 12px;
-    }
- 
-    nav {
-      display: flex;
-      justify-content: flex-end;
-      gap: 4px;
-    }
 
-    nav img {
-      width: 20px;
-      height: 20px;
-      border: none;
-    }   
-    main {      
-      padding: 10px;
-    }
-
-    /* Układ siatki dla kontenera galerii */
+/* Siatka kafelków Kaktusy / Sukulenty */
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem; /* odstęp między obrazami */
-  padding: 1rem; /* odstęp od krawędzi kontenera */
+  gap: 1rem;
+  padding: 1rem;
   justify-items: center;
 }
 
 .container a {
+  position: relative;
   display: block;
   width: 100%;
-  max-width: 100%; /* obraz wypełnia całą kolumnę */
-  position: relative;
+  max-width: 100%;
   text-decoration: none;
 }
 
 .container img {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container a:hover img {
+.container a:hover img,
+.container img:hover {
   transform: scale(1.03);
+  box-shadow: var(--shadow-hover);
 }
 
 .hover-caption::after {
   content: attr(data-caption);
   position: absolute;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  background: #4f7f4f;
-  color: #fff;
   padding: 0.5em;
   font-size: 0.9em;
   text-align: center;
+  color: var(--color-header-text);
+  background: var(--color-green-mid);
+  border-bottom-left-radius: var(--radius-sm);
+  border-bottom-right-radius: var(--radius-sm);
   opacity: 0;
   transition: opacity 0.3s ease;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
 }
 
 .hover-caption:hover::after {
   opacity: 1;
 }
-.container img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+
+/* Galeria Synology */
+.synology-gallery {
+  overflow: hidden;
+  max-width: 960px;
+  margin: 1rem auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
 }
 
-    
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-items: center;
-      }
+.synology-gallery a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
 
-      nav img {
-        width: 24px;
-        height: 24px;
-      }
-    }
+.gallery-preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  justify-items: center;
+}
 
-    @media (max-width: 480px) {
+.gallery-preview img {
+  width: 100%;
+  max-width: 220px;
+  max-height: 150px;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  transition: transform 0.3s ease;
+}
+
+.gallery-preview img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-caption {
+  padding-bottom: 1rem;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+/* Tablet / mniejszy laptop: 2×2 zamiast cienkich 4 kolumn */
+@media (min-width: 481px) and (max-width: 900px) {
+  .gallery-preview {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .gallery-preview img {
+    max-width: 100%;
+    max-height: 200px;
+  }
+
+  .gallery-caption {
+    font-size: 1.25em;
+  }
+}
+
+/* Szeroki ekran: pełne 4 kolumny, wyższe miniatury */
+@media (min-width: 901px) {
+  .gallery-preview {
+    gap: 1.35rem;
+    padding: 1.25rem 1.25rem 1rem;
+  }
+
+  .gallery-preview img {
+    max-width: none;
+    max-height: 220px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .synology-gallery {
+    max-width: 1040px;
+  }
+
+  .gallery-preview img {
+    max-height: 260px;
+  }
+}
+
+/* Kafelek Rozmaitości */
+.info-tile {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-header-text);
+  background: linear-gradient(135deg, var(--color-green-mid), var(--color-green-dark));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
+  opacity: 0.95;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-tile:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.tile-content {
+  font-size: 1.1rem;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: clamp(17px, 4.8vw, 20px);
+  }
+
   .container {
-    flex-direction: column;
-    align-items: center;
-    
+    grid-template-columns: 1fr;
   }
 
   .container a {
@@ -137,100 +260,26 @@ main {
 
   .container img {
     max-width: 90%;
-    height: auto;
     margin: 0 auto;
-    display: block;
+  }
+
+  .gallery-preview {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-  @media print {
-      header {
-        position: relative;
-        box-shadow: none;
-      }
-
-      .header-top {
-        background: none;
-        color: #000;
-      }
-
-      nav, #switchtoggles {
-        display: none;
-      }
-
-      main {
-        margin-top: 0;
-      }
-
-      span.f_Heading1 {
-        color: black;
-      }
+@media print {
+  #header {
+    position: relative;
+    box-shadow: none;
   }
-  .synology-gallery {  
-  text-align: center;
-  background: #f5f2ed;
-  border-radius: 12px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);    
-  overflow: hidden;
-}
 
-.synology-gallery a {
-  text-decoration: none;
-  color: inherit;
-}
+  .header-top {
+    color: #000;
+    background: none;
+  }
 
-.gallery-preview {
-  padding: 1rem;  
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  box-sizing: border-box; 
-}
-
-.gallery-preview img {
-  width: 100%;
-  border-radius: 8px;  
-  transition: transform 0.3s ease;
-  max-height: 150px;
-  height: auto;
-  object-fit: contain;
-}
-
-.gallery-preview img:hover {
-  transform: scale(1.05);
-}
-
-.gallery-caption {
-  font-size: 1.2em;
-  font-weight: 500;
-  color: #333;
-  padding-bottom: 1rem;
-}
-.info-tile {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 1rem;
-  background: linear-gradient(135deg, #4f7f4f, #3b6f3c);
-  color: #fff;
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 1rem 0;
-  opacity: 0.95;
-}
-
-.info-tile:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-}
-
-.tile-content {
-  font-size: 1.1rem;
-  font-weight: bold;
-  line-height: 1.4;
+  main {
+    padding-top: 10px;
+  }
 }

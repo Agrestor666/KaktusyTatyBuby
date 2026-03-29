@@ -1,183 +1,150 @@
-  body {
-      background-image: url('Logo Icon Rev 0.ico');
-      background-repeat: no-repeat;
-      background-attachment: fixed;  
-      background-size: cover;
-   }
-  html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f0e6; /* jasny beż */
-      color: #2e4d2c; /* ciemna zieleń */
-   }
-   
-  #header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #3b6f3c; /* głęboka zieleń */
-      z-index: 99;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);    
-  }
-  
-  #headerhead {
-      padding: 10px;
-      min-height: 50px;
-      background: #4f7f4f; /* oliwkowy odcień */
-      color: #fff;
-      opacity: 0.95;
-      
-    }
-  #headernav {
-      float: right;
-      display: flex;
-      gap: 8px;
-    }
-  img.nav {
-      width: 26px;
-      height: 26px;
-      border: none;
-    }    
-  #content {
-      margin-top: 100px;
-      padding: 1em;
-    }
-
-    p.crumbs {
-      font-size: 10pt;
-      margin: 0;
-    }
-
-    p.crumbs a {
-      text-decoration: none;
-      color: #ffffff;
-    }
-  
-
-    
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
+:root {
+  --color-bg: #f5f0e6;
+  --color-text: #2e4d2c;
+  --color-green-dark: #3b6f3c;
+  --color-green-mid: #4f7f4f;
+  --color-header-text: #fff;
+  --header-z: 99;
+  /* Fixed header: pasek nawigacji + wiersz „Wiedza” — kotwice, focus, przewijanie */
+  --header-offset: 108px;
+  --shadow-header: 0 2px 5px rgba(0, 0, 0, 0.2);
+  --radius-sm: 8px;
+  --radius-lg: 12px;
+  --font-ui: "Segoe UI", sans-serif;
 }
 
-figure {
-  text-align: center;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-ui);
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
-    
-img {
+
+body {
+  background-image: url("Logo Icon Rev 0.ico");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* —— Nagłówek (nawigacja: #headernav + te same hrefy co wcześniej) —— */
+#header {
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 200px; /* lub inna wartość, np. 150px */
-  object-fit: cover;
-  border-radius: 8px;
+  background: var(--color-green-dark);
+  z-index: var(--header-z);
+  box-shadow: var(--shadow-header);
 }
 
+#headerhead {
+  padding: 10px;
+  min-height: 50px;
+  background: var(--color-green-mid);
+  color: var(--color-header-text);
+  opacity: 0.95;
+}
 
- .p_Normal {
-      padding: 10px;
-      margin-left: 10px;
- }
-  @media screen and (min-width: 1024px) {
-  h2 {
-    margin-top: 120px;
-  }
-  .robak {
+.header-top {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#headernav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Ikony nawigacji (zamiast inline onmouseover — te same grafiki) */
+.nav-icon {
   display: inline-block;
-  animation: ruszaj 1.5s infinite;
+  width: 26px;
+  height: 26px;
+  text-decoration: none;
+  background: center / contain no-repeat;
+  border: none;
+  flex-shrink: 0;
 }
 
-@keyframes ruszaj {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(5px); }
-  100% { transform: translateX(0); }
-}
-}
-   
- @media screen and (max-width: 768px) {
-  .container1 {
-    flex-direction: column;
-    padding: 1em;
-  }
-  .robak {
-  display: inline-block;
-  animation: ruszaj 1.5s infinite;
+.nav-icon:focus-visible {
+  outline: 2px solid var(--color-header-text);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
-  @keyframes ruszaj {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(5px); }
-  100% { transform: translateX(0); }
-  }
-
-  #headernav {
-    display: flex;
-    flex-direction: row; /* układ w wierszu */
-    justify-content: center;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0.5em 0;
-  }
-
-  img.nav {
-    width: 32px;
-    height: 32px;
-  }
-
-  img {
-   width: 100%;
-  height: 200px; /* lub inna wartość, np. 150px */
-  object-fit: cover;
-  border-radius: 8px;
-  .p_Normal {
-    margin-left: 0;
-    padding: 1em;
-    font-size: 1em;
-  }
-
-  figcaption {
-    text-align: center;
-    font-size: 0.9em;
-  }
-  
-  .map-container {
-    width: 90%;
-    padding-bottom: 90%; /* proporcje 1:1 */
-  }
-
+.nav-icon--prev {
+  background-image: url("../IMG/hm_btn_navigate_prev.png");
 }
-@media print {
-      span.f_Heading1 {
-        color: black;
-      }
 
-      #header {
-        position: relative;
-      }
+.nav-icon--prev:hover {
+  background-image: url("../IMG/hm_btn_navigate_prev_orange.png");
+}
 
-      #headerhead {
-        background: none;
-        color: #000;
-      }
+.nav-icon--home {
+  background-image: url("../IMG/hm_btn_navigate_top.png");
+}
 
-      #headernav,
-      #switchtoggles {
-        display: none;
-      }
+.nav-icon--home:hover {
+  background-image: url("../IMG/hm_btn_navigate_top_orange.png");
+}
 
-      #content {
-        margin-top: 0;
-      }
-  }
+.nav-icon--next {
+  background-image: url("../IMG/hm_btn_navigate_next.png");
+}
+
+.nav-icon--next:hover {
+  background-image: url("../IMG/hm_btn_navigate_next_orange.png");
+}
+
+p.crumbs {
+  font-size: 10pt;
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+p.crumbs a {
+  text-decoration: none;
+  color: var(--color-header-text);
+}
+
+.header-page-title {
+  margin: 8px 0 0;
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+/* —— Treść —— */
 main {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 60px auto 0;
+  padding: 60px 20px 20px;
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  padding-top: 60px; /* lub dokładnie tyle, ile ma #header */
-  margin-top: 60px;
+}
+
+main h2,
+main h3 {
+  scroll-margin-top: var(--header-offset);
+  line-height: 1.45;
+  padding-top: 0.2em;
+  overflow: visible;
+}
+
+/* Nagłówki nad filmami: odstęp od bloku podcastów (duży ekran — siatka 3×1) */
+section.podcasty + h2 {
+  margin-top: 2rem;
 }
 
 .succulent-soil-info h2,
@@ -190,26 +157,50 @@ main > div > h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  margin: 30px 0;
+  padding: 20px;
+}
+
+/* Jedna grafika w rzędzie: auto-fit tworzy jedną kolumnę 1fr → pełna szerokość; wyrównaj do „komórki” jak przy 3 w rzędzie */
+@media screen and (min-width: 700px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid-container:has(> figure:only-child) {
+  max-width: min(100%, 340px);
+  margin-inline: auto;
+}
+
+@media screen and (min-width: 700px) {
+  .grid-container:has(> figure:only-child) {
+    max-width: none;
+    margin-inline: unset;
+  }
 }
 
 figure {
   text-align: center;
-  margin: 0;
 }
 
-figure img {
+main .grid-container img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: var(--radius-sm);
+}
+
+.p_Normal {
+  padding: 10px;
+  margin-left: 10px;
 }
 
 figcaption {
   margin-top: 8px;
   font-weight: bold;
   color: #444;
+  font-size: 13px;
+  text-align: center;
 }
 
 ul {
@@ -224,22 +215,30 @@ p em {
   font-style: italic;
   color: #2c5f2d;
 }
+
 .robak {
   display: inline-block;
-  animation: pelzanie 1.5s infinite;
+  animation: ruszaj 1.5s infinite;
 }
 
-@keyframes pelzanie {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(6px); }
-  100% { transform: translateX(0); }
+@keyframes ruszaj {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
+
 .video-wrapper {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
 }
@@ -249,12 +248,155 @@ p em {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* NOWE: żeby poster nie był „za duży” na desktopie */
+  object-fit: cover;
 }
 
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  justify-items: center;
+  padding: 10px;
+}
 
-/* Telefony */
-@media only screen and (max-width: 600px) {
+.gallery figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.thumb {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+  border-radius: var(--radius-sm);
+}
+
+.thumb:hover {
+  transform: scale(1.05);
+}
+
+#fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#fullscreen.hidden {
+  display: none;
+}
+
+#fullscreen img {
+  max-width: 95%;
+  max-height: 95vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Podcasty */
+.podcasty {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.podcasty h2 {
+  text-align: left;
+  color: #2e7d32;
+  margin-bottom: 30px;
+}
+
+.podcast-row {
+  display: block;
+  width: 100%;
+}
+
+.podcast-card {
+  display: block;
+  width: 90%;
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #faf7f0 0%, #f9f5eb 100%) !important;
+  border: 2px solid var(--color-green-dark) !important;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(59, 111, 60, 0.25) !important;
+  text-align: center;
+  min-height: 140px;
+}
+
+.podcast-card h3 {
+  margin: 0 0 10px;
+  font-size: 19px;
+  color: var(--color-text);
+  text-align: center;
+  font-weight: 600;
+}
+
+.podcast-card p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 8px 0 14px;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.podcast-card a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff !important;
+  background-color: var(--color-green-dark) !important;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.podcast-card a:hover {
+  background-color: var(--color-green-mid) !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* —— Responsywność —— */
+@media screen and (max-width: 768px) {
+  .header-top {
+    align-items: flex-start;
+  }
+
+  .nav-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .p_Normal {
+    margin-left: 0;
+    padding: 1em;
+    font-size: 1em;
+  }
+
+  figcaption {
+    font-size: 0.9em;
+  }
+
+  .map-container {
+    width: 90%;
+    padding-bottom: 90%;
+  }
+
   .video-wrapper {
     max-width: 100%;
     margin: 0;
@@ -262,10 +404,74 @@ p em {
   }
 
   .video-wrapper video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;  /* jak było */
+    object-fit: contain;
+  }
+
+  main {
+    padding: 60px 10px 15px;
+  }
+
+  .gallery {
+    padding: 10px 5px;
+    gap: 12px;
   }
 }
 
+@media screen and (min-width: 768px) {
+  .podcast-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .podcast-card {
+    flex: 1 1 100px;
+    max-width: 350px;
+    margin: 0;
+    min-height: 100px;
+    padding: 24px;
+  }
+
+  .podcast-card h3 {
+    font-size: 20px;
+  }
+
+  .podcast-card p {
+    font-size: 16px;
+    margin: 12px 0 16px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .thumb {
+    max-width: 200px;
+  }
+
+  figcaption {
+    font-size: 14px;
+  }
+}
+
+@media print {
+  span.f_Heading1 {
+    color: black;
+  }
+
+  #header {
+    position: relative;
+  }
+
+  #headerhead {
+    background: none;
+    color: #000;
+  }
+
+  #headernav,
+  #switchtoggles {
+    display: none;
+  }
 }

@@ -1,37 +1,28 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
-   <title>Rozmaitosci</title>
-   <link rel="icon" type="image/x-icon" href="../IMG/kaktus.ico">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta charset="UTF-8">
-   <link href="dodatki.css" rel="stylesheet" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  </head>
+  <title>Rozmaitości</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/x-icon" href="../IMG/kaktus.ico">
+  <link rel="stylesheet" href="dodatki.css?v=4">
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+</head>
 <body>
-
-<div id="header">
-   <div id="headerhead">  
-    <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="../index.html">Kaktusy i Sukulenty</a>&nbsp;&gt;</p>
-     <div id="headernav">
-      <a href="../kaktusy/index.html"
-       onmouseover="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev_orange.png'"
-       onmouseout="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev.png'"><img class="nav" id="prev" name="prev"  
-       src="../IMG/hm_btn_navigate_prev.png" alt="Previous page"></a>
-      <a href="../index.html" 
-        onmouseover="document.getElementById('main').src = '../IMG/hm_btn_navigate_top_orange.png'" 
-        onmouseout="document.getElementById('main').src = '../IMG/hm_btn_navigate_top.png'"><img class="nav" id="main" name="main" 
-        src="../IMG/hm_btn_navigate_top.png" alt="main"></a>
-      <a href="../sukulenty/index.html"
-        onmouseover="document.getElementById('next').src = '../IMG/hm_btn_navigate_next_orange.png'" 
-        onmouseout="document.getElementById('next').src ='../IMG/hm_btn_navigate_next.png'">
-        <img class="nav" id="next" name="next" src="../IMG/hm_btn_navigate_next.png" alt="Next page"></a>
-     </div>
-    <p><span style="font-size: 18pt; font-weight: bold;">Wiedza</span></p>
+<header id="header">
+  <div id="headerhead">
+    <div class="header-top">
+      <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="../index.html">Kaktusy i Sukulenty</a>&nbsp;&gt;</p>
+      <nav id="headernav" aria-label="Nawigacja między sekcjami">
+        <a href="../kaktusy/index.html" class="nav-icon nav-icon--prev" aria-label="Kaktusy — poprzednia sekcja"></a>
+        <a href="../index.html" class="nav-icon nav-icon--home" aria-label="Strona główna"></a>
+        <a href="../sukulenty/index.html" class="nav-icon nav-icon--next" aria-label="Sukulenty — następna sekcja"></a>
+      </nav>
+    </div>
+    <p class="header-page-title">Wiedza</p>
   </div>
-</div>  
+</header>
 <main>
 <section class="succulent-soil-info">
   <h2>🌵 Jakie właściwości powinna mieć ziemia dla kaktusów i sukulentów?</h2>
@@ -83,7 +74,7 @@
   </figure>    
 </div>
 <div>
-  <h3>🧪 Składniki podłoża dla kaktusów i sukulentów</h2>
+  <h3>🧪 Składniki podłoża dla kaktusów i sukulentów</h3>
   <ul>
     <li>🏖️ <strong>Piasek (25%)</strong> – najlepiej piasek kwarcowy lub akwarystyczny. Unikaj piasku budowlanego (np. z marketów), który może zawierać glinę, wapń lub inne zanieczyszczenia szkodliwe dla roślin.</li>
     <li>🪨 <strong>Żwir (20%)</strong> – używaj czystego żwiru kwarcowego lub akwarystycznego o frakcji 2–6 mm. Żwir budowlany często zawiera pyły, sole i wapń, które mogą zmienić pH gleby i zaszkodzić roślinom.</li>
@@ -99,7 +90,6 @@
 </div>
 <h3><span class="robak">🐛</span>Szkodniki kaktusów domowych i tarasowych<span class="robak">🐛</span></h3>
 <p>Kaktusy, choć odporne na suszę i słońce, bywają podatne na ataki szkodników — zwłaszcza w warunkach domowych i na tarasach. Poniżej przedstawiamy najczęstsze zagrożenia oraz sposoby ich zwalczania:</p>
-
 <ul>
   <li>🐛 <b>Wełnowce</b> – białe, watowate skupiska na łodygach i korzeniach. Osłabiają roślinę, powodując zahamowanie wzrostu.<br>
   <i>Preparaty:</i> Polysect Długodziałający, Agricolle Spray, Emulpar 940 EC</li>
@@ -118,6 +108,7 @@
 </ul>
 
 <p>Dla skutecznej ochrony warto regularnie kontrolować rośliny, zapewnić dobrą cyrkulację powietrza i unikać nadmiernego podlewania.</p>
+
 <section class="extra-section">
   <h2>🧪 Nawozy</h2>
   <p>
@@ -134,7 +125,7 @@
   </p>
 </section>
 
-<section>
+<section class="extra-section">
   <h2>🏬 Sklepy z kaktusami</h2>
   <p>Oto kilka polecanych sklepów z kaktusami i sukulentami (głównie kolekcjonerskie, także zagraniczne):</p>
   <ul>
@@ -166,8 +157,29 @@
   </ul>
   <p>Pamiętaj, aby przed zamówieniem sprawdzić koszty i warunki wysyłki do Polski oraz dostępność wybranych gatunków.</p>
 </section>
-<h2>🌵 Kaktusy – Sekrety kwitnienia 🌼</h2>
 
+<section class="podcasty">
+  <h2>🎙️ Podcasty o kaktusach</h2>
+  <div class="podcast-row">
+    <div class="podcast-card">
+      <h3>🌵 Walka ze szkodnikami</h3>
+      <p>Kto tu jest winien - Co zabija kaktusy: błędy czy szkodniki?</p>
+      <a href="https://storage.googleapis.com/cactus-knowledge/podkasty/Co_zabija_kaktusy_b%C5%82%C4%99dy_czy_szkodniki.m4a" target="_blank">Słuchaj odcinka</a>
+    </div>
+    <div class="podcast-card">
+      <h3>🌵 Rozmnazanie kaktusów</h3>
+      <p>Sadzonki czy nasiona?</p>
+      <a href="https://storage.googleapis.com/cactus-knowledge/podkasty/Sadzonkowanie_szczepienie_i_wysiew_kaktus%C3%B3w.m4a" target="_blank">Słuchaj odcinka</a>
+    </div>
+    <div class="podcast-card">
+      <h3>🌵 Roboty ziemne</h3>
+      <p>O doniczkach, ziemi i przesadzaniu?</p>
+      <a href="https://storage.googleapis.com/cactus-knowledge/podkasty/Unikaj_torfu_i_susz_korzenie_kaktus%C3%B3w.m4a" target="_blank">Słuchaj odcinka</a>
+    </div>
+    
+  </div>
+</section>
+<h2>🌵 Kaktusy – Sekrety kwitnienia 🌼</h2>
   <div class="video-wrapper">
   <video
     controls
@@ -200,9 +212,51 @@
     Twoja przeglądarka nie obsługuje wideo HTML5.
   </video>
 </div>
+
+<h2>🌵 Choroby i szkodniki kaktusów 🐛</h2>
+
+  <div class="video-wrapper">
+  <video
+    controls
+    preload="metadata"
+    poster="IMG/miniaturka3.png"
+    playsinline
+    webkit-playsinline
+  >
+    <source
+      src="https://storage.googleapis.com/cactus-knowledge/video/Piel%C4%99gnacja_Kaktus%C3%B3w_101.mp4"
+      type="video/mp4"
+    >
+    Twoja przeglądarka nie obsługuje wideo HTML5.
+  </video>
+</div>
+
+<br>
+<div class="gallery">
+  <figure>
+    <img src="./IMG/Podlewanie-iconogrfika.png" class="thumb" alt="Podlewanie">
+    <figcaption>Podlewanie</figcaption>
+  </figure>
+  <figure>
+    <img src="./IMG/Szkodniki-ikonografia.png" class="thumb" alt="Szkodniki">
+    <figcaption>Szkodniki</figcaption>
+  </figure>
+  <figure>
+  <img src="./IMG/zimowanie_i_przesadzanie.png" class="thumb" alt="Zimowanie">
+  <figcaption>Zimowanie</figcaption>
+  </figure>
+  <figure>
+  <img src="./IMG/rozmnazanie.png" class="thumb" alt="Rozmnazanie">
+  <figcaption>Rozmnazanie</figcaption>
+  </figure>
+</div>
+<!-- kontener na powiększony obraz -->
+<div id="fullscreen" class="hidden">
+  <img id="fullscreen-img" src="" alt="Duży obraz">
+</div>
 </main>
-</body>
-<link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+
+<script src="dodatki.js?v=1"></script>
 <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
 <df-messenger
   location="eu"
@@ -210,25 +264,53 @@
   agent-id="3e0c8e73-4bf3-42ba-beb8-7e9604ffa66b"
   language-code="pl"
   max-query-length="-1">
-  <df-messenger-chat-bubble
-    chat-title="Kolczak">
-  </df-messenger-chat-bubble>
+  <df-messenger-chat-bubble chat-title="Kolczak" chat-icon="IMG/kolczak.png"></df-messenger-chat-bubble>
 </df-messenger>
-<!-- Listener -->
-<script> document.querySelector('df-messenger') .addEventListener('df-response-received',
- e => { console.log(e.detail.response.queryResult.responseMessages); }); </script>
-
+<script>
+  document.querySelector("df-messenger")?.addEventListener("df-response-received", (e) => {
+    console.log(e.detail.response.queryResult.responseMessages);
+  });
+</script>
 <style>
   df-messenger {
     z-index: 999;
     position: fixed;
-    --df-messenger-font-color: #000;
-    --df-messenger-font-family: Google Sans;
-    --df-messenger-chat-background: #f3f6fc;
-    --df-messenger-message-user-background: #d3e3fd;
-    --df-messenger-message-bot-background: #fff;
     bottom: 16px;
     right: 16px;
+    /* Zgodne z dodatki.css (:root) — czcionka i kolory strony */
+    --df-messenger-font-family: var(--font-ui);
+    --df-messenger-font-color: var(--color-text);
+    --df-messenger-primary-color: var(--color-green-dark);
+    --df-messenger-focus-color: var(--color-green-mid);
+    --df-messenger-focus-color-contrast: var(--color-header-text);
+    --df-messenger-chat-border-radius: var(--radius-lg);
+    /* Pasek tytułu jak nagłówek */
+    --df-messenger-titlebar-background: linear-gradient(
+      to right,
+      var(--color-green-dark),
+      var(--color-green-mid)
+    );
+    --df-messenger-titlebar-font-color: var(--color-header-text);
+    --df-messenger-titlebar-subtitle-font-color: var(--color-header-text);
+    /* Okno rozmowy */
+    --df-messenger-chat-background: var(--color-bg);
+    --df-messenger-message-bot-background: #fff;
+    --df-messenger-message-bot-font-color: var(--color-text);
+    --df-messenger-message-user-background: #c8dcc8;
+    --df-messenger-message-user-font-color: var(--color-text);
+    --df-messenger-message-bot-writing-background: #eef4ee;
+    --df-messenger-message-bot-writing-font-color: var(--color-text);
+    /* Pole wpisywania i wysyłka */
+    --df-messenger-input-background: #fff;
+    --df-messenger-input-font-color: var(--color-text);
+    --df-messenger-input-border-top: 1px solid rgba(59, 111, 60, 0.25);
+    --df-messenger-send-icon-color: var(--color-green-dark);
+    --df-messenger-send-icon-color-hover: var(--color-green-mid);
+    --df-messenger-send-icon-color-active: var(--color-green-mid);
+    /* Bąbelek (launcher) */
+    --df-messenger-chat-bubble-background: var(--color-green-mid);
+    --df-messenger-chat-bubble-icon-color: var(--color-header-text);
   }
 </style>
+</body>
 </html>
