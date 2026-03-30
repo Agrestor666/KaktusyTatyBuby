@@ -1,15 +1,20 @@
 :root {
   --color-bg: #f5f0e6;
+  --color-bg-card: #f5f2ed;
   --color-text: #2e4d2c;
+  --color-text-muted: #333;
   --color-green-dark: #3b6f3c;
   --color-green-mid: #4f7f4f;
+  --color-green-accent: #7bd389;
   --color-header-text: #fff;
   --header-z: 99;
   /* Fixed header: pasek nawigacji + wiersz „Wiedza” — kotwice, focus, przewijanie */
   --header-offset: 108px;
   --shadow-header: 0 2px 5px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.2);
   --radius-sm: 8px;
   --radius-lg: 12px;
+  --header-height: 50px;
   --font-ui: "Segoe UI", sans-serif;
 }
 
@@ -18,33 +23,49 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-ui);
-  background-color: var(--color-bg);
   color: var(--color-text);
 }
 
 body {
-  background-image: url("Logo Icon Rev 0.ico");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  min-height: 100%;
+  background-color: #efe8dd;
+  background-image:
+    radial-gradient(ellipse 100% 70% at 50% -25%, rgba(123, 211, 137, 0.22), rgba(123, 211, 137, 0) 55%),
+    radial-gradient(ellipse 55% 45% at 100% 35%, rgba(79, 127, 79, 0.12), rgba(79, 127, 79, 0) 52%),
+    radial-gradient(ellipse 50% 42% at 0% 55%, rgba(123, 211, 137, 0.14), rgba(123, 211, 137, 0) 48%),
+    linear-gradient(168deg, #faf6f0 0%, var(--color-bg) 42%, #eef4ed 100%);
+  background-size: 100% 100%, 120% 120%, 120% 120%, 100% 100%;
+  background-position: center top, 100% 40%, 0% 60%, center;
 }
 
 /* —— Nagłówek (nawigacja: #headernav + te same hrefy co wcześniej) —— */
 #header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  background: var(--color-green-dark);
+  height: auto;
+  min-height: var(--header-height);
   z-index: var(--header-z);
-  box-shadow: var(--shadow-header);
+  background:
+    radial-gradient(1100px 260px at 18% 25%, rgba(123, 211, 137, 0.34), rgba(123, 211, 137, 0) 62%),
+    radial-gradient(900px 240px at 84% 40%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 60%),
+    linear-gradient(105deg, #2f5f33 0%, var(--color-green-dark) 28%, var(--color-green-mid) 62%, #2f6b3f 100%);
+  background-size: 120% 140%, 140% 140%, 200% 100%;
+  background-position: 0% 0%, 100% 0%, 0% 50%;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
 }
 
 #headerhead {
-  padding: 10px;
-  min-height: 50px;
-  background: var(--color-green-mid);
+  padding: 12px 14px;
+  min-height: var(--header-height);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
   color: var(--color-header-text);
-  opacity: 0.95;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .header-top {
@@ -53,6 +74,53 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+}
+
+@keyframes pageAmbient {
+  0% {
+    background-position: center top, 100% 40%, 0% 60%, center;
+  }
+  50% {
+    background-position: center top, 92% 38%, 8% 62%, center;
+  }
+  100% {
+    background-position: center top, 100% 40%, 0% 60%, center;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    animation: pageAmbient 22s ease-in-out infinite;
+  }
+}
+
+@keyframes headerSheen {
+  0% {
+    background-position: 0% 0%, 100% 0%, 0% 50%;
+  }
+  50% {
+    background-position: 8% 10%, 92% 12%, 55% 50%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 0%, 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #header {
+    animation: headerSheen 10s ease-in-out infinite;
+  }
+}
+
+@media (min-width: 700px) {
+  #header {
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 22px;
+  }
+
+  #headerhead {
+    padding: 16px 18px;
+  }
 }
 
 #headernav {
@@ -248,7 +316,9 @@ p em {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* Miniatury (poster) mają tekst — nie możemy ich przycinać. */
+  object-fit: contain;
+  background: #000;
 }
 
 .gallery {
@@ -318,15 +388,20 @@ p em {
 }
 
 .podcast-row {
-  display: block;
+  /* Wyrównanie kart w siatce zamiast flexa (mniej niespodzianek z szerokościami). */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
   width: 100%;
 }
 
 .podcast-card {
   display: block;
-  width: 90%;
+  width: 100%;
   max-width: 100%;
-  margin: 20px auto;
+  margin: 0;
+  /* Żeby szerokość karty w siatce nie “rozjeżdżała” się przez padding/border. */
+  box-sizing: border-box;
   padding: 20px 24px;
   background: linear-gradient(135deg, #faf7f0 0%, #f9f5eb 100%) !important;
   border: 2px solid var(--color-green-dark) !important;
@@ -417,20 +492,25 @@ p em {
   }
 }
 
+/* Duże ekrany – pomniejsz miniatury wideo o ok. 40% */
+@media screen and (min-width: 1024px) {
+  .video-wrapper {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .podcast-row {
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
-    justify-content: center;
   }
 
   .podcast-card {
-    flex: 1 1 100px;
-    max-width: 350px;
-    margin: 0;
+    max-width: none;
     min-height: 100px;
     padding: 24px;
+    width: auto; /* Nie wymuszamy szerokości — karta ma się rozciągać do kolumny. */
   }
 
   .podcast-card h3 {

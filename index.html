@@ -13,7 +13,10 @@
 <body>
   <header id="header">
     <div class="header-top">
-      <h1 class="site-title">🌵 Kaktusy i Sukulenty</h1>
+      <div class="header-brand">
+        <h1 class="site-title">Kaktusy i Sukulenty</h1>
+        <p class="site-tagline">Zielona baza wiedzy, inspiracji i wydarzeń</p>
+      </div>
     </div>
   </header>
 
@@ -42,9 +45,78 @@
     <a href="./rozmaitosci/dodatkowe.html" class="info-tile">
       <div class="tile-content">
         🧪 Rozmaitości<br>
-        <small>Ziemia, nawozy, zakupy</small>
       </div>
     </a>
+
+    <button type="button" class="info-tile" id="events2026Tile" aria-haspopup="dialog" aria-controls="events2026Modal">
+      <div class="tile-content">
+        📅 Wydarzenia 2026<br>
+        <small>Lista spotkań i wystaw</small>
+      </div>
+    </button>
+
+    <div class="modal" id="events2026Modal" hidden role="dialog" aria-modal="true" aria-labelledby="events2026Title">
+      <div class="modal__backdrop" data-modal-close="true"></div>
+      <div class="modal__panel" role="document">
+        <div class="modal__header">
+          <h2 class="modal__title" id="events2026Title">Wydarzenia 2026</h2>
+          <button type="button" class="modal__close" aria-label="Zamknij" data-modal-close="true">×</button>
+        </div>
+
+        <div class="modal__body">
+          <ul class="events-list">
+            <li class="events-list__item">
+              <div class="events-list__date">31.01.2026</div>
+              <div class="events-list__details">
+                <div class="events-list__title">Święto Kaktusa</div>
+                <div class="events-list__meta">Centrum Dagleja</div>
+              </div>
+            </li>
+                                  
+            <li class="events-list__item">
+              <div class="events-list__date">01–03.05.2026 (pt–nd)</div>
+              <div class="events-list__details">
+                <div class="events-list__title">KAKTUSIADA 2026 — Jubileusz 60‑lecia PTMK (Wiosenne Spotkanie Miłośników Kaktusów)</div>
+                <div class="events-list__meta">Ustroń–Jaszowiec</div>
+              </div>
+            </li>
+
+            <li class="events-list__item">
+              <div class="events-list__date">15–17.05.2026</div>
+              <div class="events-list__details">
+                <div class="events-list__title">Wystawa Kaktusów w Krakowie</div>
+                <div class="events-list__meta">Kraków, Ogród Botaniczny (PTMK Kraków i Śląsk)</div>
+              </div>
+            </li>
+
+                        
+            <li class="events-list__item">
+              <div class="events-list__date">05–07.06.2026</div>
+              <div class="events-list__details">
+                <div class="events-list__title">Wystawa Kaktusów i Sukulentów w Łodzi</div>
+                <div class="events-list__meta">Łódź, Palmiarnia Łódzka</div>
+              </div>
+            </li>
+
+            <li class="events-list__item">
+              <div class="events-list__date">09–14.06.2026</div>
+              <div class="events-list__details">
+                <div class="events-list__title">Wystawa w Palmiarni w Gliwicach</div>
+                <div class="events-list__meta">Gliwice (giełda roślin: 12–14.06)</div>
+              </div>
+            </li>
+
+            <li class="events-list__item">
+              <div class="events-list__date">20–21.06.2026 (sob–nd)</div>
+              <div class="events-list__details">
+                <div class="events-list__title">Lubelska Wystawa Kaktusów i Innych Sukulentów</div>
+                <div class="events-list__meta">Lublin, Ogród Botaniczny</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script>
@@ -65,6 +137,72 @@
 
       // Start immediately (in case of bfcache / fast paint)
       schedule();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const openBtn = document.getElementById("events2026Tile");
+      const modal = document.getElementById("events2026Modal");
+      if (!openBtn || !modal) return;
+
+      const closeEls = modal.querySelectorAll("[data-modal-close='true']");
+      const panel = modal.querySelector(".modal__panel");
+      let lastActive = null;
+
+      const getFocusable = () =>
+        Array.from(
+          modal.querySelectorAll(
+            "a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex='-1'])"
+          )
+        ).filter((el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"));
+
+      const open = () => {
+        lastActive = document.activeElement;
+        modal.hidden = false;
+        document.body.classList.add("modal-open");
+        const focusables = getFocusable();
+        (focusables[0] || panel || modal).focus?.();
+      };
+
+      const close = () => {
+        modal.hidden = true;
+        document.body.classList.remove("modal-open");
+        if (lastActive && lastActive.focus) lastActive.focus();
+      };
+
+      openBtn.addEventListener("click", open);
+      closeEls.forEach((el) => el.addEventListener("click", close));
+
+      modal.addEventListener("click", (e) => {
+        const target = e.target;
+        if (!(target instanceof Element)) return;
+        if (target.closest("[data-modal-close='true']")) close();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (modal.hidden) return;
+        if (e.key === "Escape") {
+          e.preventDefault();
+          close();
+          return;
+        }
+        if (e.key !== "Tab") return;
+
+        const focusables = getFocusable();
+        if (!focusables.length) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
     })();
   </script>
 </body>
