@@ -9,9 +9,13 @@
   --color-header-text: #fff;
   --header-z: 99;
   /* Fixed header: pasek nawigacji + wiersz „Wiedza” — kotwice, focus, przewijanie */
-  --header-offset: 108px;
+  --header-offset: 140px;
   --shadow-header: 0 2px 5px rgba(0, 0, 0, 0.2);
   --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.2);
+  --home-content-max: 1100px;
+  --glass-surface: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(59, 111, 60, 0.14);
+  --shadow-home-deep: 0 14px 40px rgba(47, 95, 51, 0.1);
   --radius-sm: 8px;
   --radius-lg: 12px;
   --header-height: 50px;
@@ -26,8 +30,30 @@ body {
   color: var(--color-text);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-padding-top: var(--header-offset);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   min-height: 100%;
+  font-size: 16px;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: #efe8dd;
   background-image:
     radial-gradient(ellipse 100% 70% at 50% -25%, rgba(123, 211, 137, 0.22), rgba(123, 211, 137, 0) 55%),
@@ -36,6 +62,90 @@ body {
     linear-gradient(168deg, #faf6f0 0%, var(--color-bg) 42%, #eef4ed 100%);
   background-size: 100% 100%, 120% 120%, 120% 120%, 100% 100%;
   background-position: center top, 100% 40%, 0% 60%, center;
+}
+
+main {
+  margin: 0 auto;
+  max-width: var(--home-content-max);
+  padding: calc(var(--header-offset) + 18px) clamp(12px, 3.2vw, 22px) 32px;
+}
+
+.content-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.content-card {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: calc(var(--radius-lg) + 4px);
+  box-shadow: var(--shadow-home-deep), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: clamp(14px, 3vw, 22px);
+}
+
+.content-card > :first-child {
+  margin-top: 0;
+}
+
+.content-card > :last-child {
+  margin-bottom: 0;
+}
+
+.content-title {
+  margin: 0 0 10px;
+  color: var(--color-green-dark);
+  letter-spacing: 0.01em;
+}
+
+.content-title:is(h2) {
+  font-size: clamp(20px, 3.4vw, 28px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.content-title:is(h3) {
+  font-size: clamp(16px, 2.8vw, 20px);
+  font-weight: 750;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.content-card p {
+  margin: 0.6rem 0;
+}
+
+.content-card ul {
+  margin: 0.65rem 0;
+  padding-left: 1.1rem;
+}
+
+.content-card li {
+  margin: 0.35rem 0;
+}
+
+.content-card a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(59, 111, 60, 0.45);
+  text-underline-offset: 3px;
+}
+
+.content-card a:hover {
+  text-decoration-color: rgba(59, 111, 60, 0.75);
+}
+
+.content-card a:focus-visible {
+  outline: 2px solid rgba(59, 111, 60, 0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.content-subtitle {
+  margin: 0 0 14px;
+  color: var(--color-text-muted);
+  line-height: 1.45;
 }
 
 /* —— Nagłówek (nawigacja: #headernav + te same hrefy co wcześniej) —— */
@@ -173,7 +283,7 @@ body {
 }
 
 p.crumbs {
-  font-size: 10pt;
+  font-size: 0.95rem;
   margin: 0;
   flex: 1 1 auto;
   min-width: 0;
@@ -195,10 +305,6 @@ p.crumbs a {
 
 /* —— Treść —— */
 main {
-  max-width: 1000px;
-  margin: 60px auto 0;
-  padding: 60px 20px 20px;
-  font-family: Arial, sans-serif;
   line-height: 1.6;
 }
 
@@ -208,6 +314,33 @@ main h3 {
   line-height: 1.45;
   padding-top: 0.2em;
   overflow: visible;
+}
+
+/* Typografia: pozostałe nagłówki w kartach (bez .content-title) */
+.content-card h2:not(.content-title) {
+  font-size: clamp(20px, 3.4vw, 28px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  color: var(--color-green-dark);
+  letter-spacing: 0.01em;
+}
+
+.content-card h3:not(.content-title):not(.podcast-card h3) {
+  font-size: clamp(16px, 2.8vw, 20px);
+  font-weight: 750;
+  line-height: 1.25;
+  margin: 14px 0 10px;
+  color: var(--color-text);
+}
+
+.content-card h3:not(.content-title):first-child {
+  margin-top: 0;
+}
+
+/* Podcast-card ma własną typografię, ale bez „nadmiarowych” zieleni */
+.podcast-card h3 {
+  color: var(--color-text);
 }
 
 /* Nagłówki nad filmami: odstęp od bloku podcastów (duży ekran — siatka 3×1) */
@@ -226,6 +359,11 @@ main > div > h2 {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
+}
+
+/* Karta/sekcja: jeśli opakujesz grid w .content-card, nie dubluj paddingu */
+.content-card .grid-container {
+  padding: 0;
 }
 
 /* Jedna grafika w rzędzie: auto-fit tworzy jedną kolumnę 1fr → pełna szerokość; wyrównaj do „komórki” jak przy 3 w rzędzie */
@@ -271,6 +409,14 @@ figcaption {
   text-align: center;
 }
 
+/* Lepsza czytelność podpisów */
+.content-card figcaption {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: rgba(46, 77, 44, 0.92);
+}
+
 ul {
   padding-left: 20px;
 }
@@ -305,10 +451,14 @@ p em {
   position: relative;
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
-  padding-bottom: 56.25%;
-  height: 0;
+  margin: 12px auto 18px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   overflow: hidden;
+  border-radius: calc(var(--radius-lg) + 4px);
+  border: 1px solid rgba(59, 111, 60, 0.18);
+  background: radial-gradient(900px 220px at 30% 10%, rgba(123, 211, 137, 0.18), rgba(0, 0, 0, 0) 58%), #0a0f0a;
+  box-shadow: 0 14px 34px rgba(25, 40, 28, 0.25);
 }
 
 .video-wrapper video {
@@ -316,9 +466,25 @@ p em {
   inset: 0;
   width: 100%;
   height: 100%;
-  /* Miniatury (poster) mają tekst — nie możemy ich przycinać. */
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
   background: #000;
+}
+
+/* Podczas odtwarzania centrowanie kadru wygląda naturalniej */
+.video-wrapper.is-playing video {
+  object-position: center;
+}
+
+.content-card[aria-label="Wideo"] .content-title {
+  margin-bottom: 12px;
+}
+
+.content-card[aria-label="Wideo"] h3.content-title {
+  margin-top: 18px;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: var(--color-text);
 }
 
 .gallery {
@@ -355,10 +521,6 @@ p em {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1000;
 }
 
@@ -367,11 +529,69 @@ p em {
 }
 
 #fullscreen img {
-  max-width: 95%;
-  max-height: 95vh;
+  display: block;
+  max-width: min(1100px, calc(100vw - 48px));
+  max-height: min(82vh, 860px);
   width: auto;
   height: auto;
   object-fit: contain;
+  border-radius: calc(var(--radius-lg) + 4px);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 30, 20, 0.62);
+  backdrop-filter: blur(3px);
+}
+
+.lightbox__panel {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.lightbox__caption {
+  margin-top: 10px;
+  max-width: min(1100px, calc(100vw - 48px));
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+  line-height: 1.35;
+  font-weight: 600;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.lightbox__close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* UX: klikane obrazki w kartach */
+.content-card figure img {
+  cursor: zoom-in;
 }
 
 /* Podcasty */
@@ -379,6 +599,13 @@ p em {
   max-width: 1000px;
   margin: 40px auto;
   padding: 0 16px;
+}
+
+/* Gdy podcasty są już opakowane w .content-card, nie nakładaj drugiego layoutu */
+.content-card.podcasty {
+  max-width: none;
+  margin: 0;
+  padding: clamp(14px, 3vw, 22px);
 }
 
 .podcasty h2 {
@@ -473,18 +700,15 @@ p em {
   }
 
   .video-wrapper {
-    max-width: 100%;
-    margin: 0;
-    padding-bottom: 56.25%;
+    margin: 10px 0 16px;
+    border-radius: calc(var(--radius-lg) + 2px);
   }
 
   .video-wrapper video {
-    object-fit: contain;
+    object-fit: cover;
   }
 
-  main {
-    padding: 60px 10px 15px;
-  }
+  /* main ma layout jak strona główna (ustawione wyżej) */
 
   .gallery {
     padding: 10px 5px;
@@ -495,8 +719,7 @@ p em {
 /* Duże ekrany – pomniejsz miniatury wideo o ok. 40% */
 @media screen and (min-width: 1024px) {
   .video-wrapper {
-    max-width: 60%;
-    margin: 0 auto;
+    max-width: min(860px, 100%);
   }
 }
 
