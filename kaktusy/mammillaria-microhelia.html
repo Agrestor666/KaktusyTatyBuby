@@ -5,40 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mammillaria microhelia</title>
   <link rel="icon" type="image/x-icon" href="../IMG/kaktus.ico">
-  <link rel="stylesheet"  href="kaktusy.css"  />
+  <link rel="stylesheet" href="../rozmaitosci/dodatki.css?v=5">
+  <link rel="stylesheet" href="kaktusy.css?v=1">
 </head>
 
 <body> 
-  <div id="header">
+  <header id="header">
     <div id="headerhead">
-      <p class="crumbs"><b>Nawigacja:</b> <a href="index.html">Kaktusy</a> &gt;</p>
-      <div id="headernav">
-        <a href="index.html">
-          <img class="nav" id="prev" src="../IMG/hm_btn_navigate_prev.png" alt="Poprzednia strona">
-        </a>
-        <a href="index.html">
-          <img class="nav" id="main" src="../IMG/hm_btn_navigate_top.png" alt="Strona główna">
-        </a>
-        <a href="../kaktusy/gymnocalycium-horstii.html">
-          <img class="nav" id="next" src="../IMG/hm_btn_navigate_next.png" alt="Następna strona">
-        </a>
+      <div class="header-top">
+        <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="spis-kaktusow.html">Kaktusy</a>&nbsp;&gt;</p>
+        <nav id="headernav" aria-label="Nawigacja między kartami kaktusów">
+          <a href="neoporteria-senilis.html" class="nav-icon nav-icon--prev" aria-label="Poprzednia karta"></a>
+          <a href="spis-kaktusow.html" class="nav-icon nav-icon--home" aria-label="Spis kaktusów"></a>
+          <a href="astrophytum-myriostigma.html" class="nav-icon nav-icon--next" aria-label="Następna karta"></a>
+        </nav>
       </div>
-      <p><span style="font-size: 16pt; font-weight: bold;">Mammillaria microhelia</span></p>
+      <p class="header-page-title">Mammillaria microhelia</p>
     </div>
-    <div id="switchtoggles"></div>
-  </div>
- 
-<div id="content">
-      <h1><i></i></h1>
-</div>  
-  <div class="map-container">
-  <br>
-  <iframe src="https://www.google.com/maps/d/embed?mid=1lHC4ugEvqrC4SRS4xcMocx9CAs2Q0js&ehbc=2E312F&noprof=1"
-   width="640" height="480">
-  </iframe>
-  </div>    
-  
-  <section id="mammillaria-microhelia" style="padding: 20px;">
+  </header>
+
+  <main>
+    <div class="content-stack">
+      <section class="content-card">
+        <div class="map-container" aria-label="Mapa występowania">
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1lHC4ugEvqrC4SRS4xcMocx9CAs2Q0js&ehbc=2E312F&noprof=1"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section id="mammillaria-microhelia" class="content-card section">
   <p><strong>Nazwa zwyczajowa:</strong> brak ustalonej; często określana jako mikromammillaria</p>
   <p><strong>Rodzina:</strong> Cactaceae</p>
 
@@ -77,9 +76,8 @@
 
   <h3>🏆 Ciekawostki</h3>
   <p>Ze względu na niewielkie rozmiary i atrakcyjne kwitnienie, gatunek ten jest ceniony w kolekcjach miniaturowych kaktusów. Nazwa „microhelia” odnosi się do drobnych cech morfologicznych i delikatnego wyglądu rośliny.</p>
-</section>   
-  
-
-<script src="kaktusy.js"></script>
+      </section>
+    </div>
+  </main>
 </body>
 </html>

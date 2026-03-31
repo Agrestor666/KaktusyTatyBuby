@@ -3,40 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agave americana</title>
+  <title>Cotyledon ladismithiensis</title>
   <link rel="icon" type="image/x-icon" href="../IMG/kaktus.ico">
-  <link rel="stylesheet"  href="sukulenty.css"  />
+  <link rel="stylesheet" href="../rozmaitosci/dodatki.css?v=5">
+  <link rel="stylesheet" href="sukulenty.css?v=1" />
+  <script defer src="../rozmaitosci/lightbox.js?v=1"></script>
 </head>
 
 <body>
  
-  <div id="header">
+  <header id="header">
     <div id="headerhead">
-      <p class="crumbs"><b>Nawigacja:</b> <a href="index.html">Sukulenty</a> &gt;</p>
-      <div id="headernav">
-        <a href="../sukulenty/index.html">
-          <img class="nav" id="prev" src="../IMG/hm_btn_navigate_prev.png" alt="Poprzednia strona">
-        </a>
-        <a href="index.html">
-          <img class="nav" id="main" src="../IMG/hm_btn_navigate_top.png" alt="Strona główna">
-        </a>
-        <a href="../kaktusy/gymnocalycium-horstii.html">
-          <img class="nav" id="next" src="../IMG/hm_btn_navigate_next.png" alt="Następna strona">
-        </a>
+      <div class="header-top">
+        <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="../index.html">Kaktusy i Sukulenty</a>&nbsp;&gt;&nbsp;<a href="spis-sukulentow.html">Sukulenty</a>&nbsp;&gt;</p>
+        <nav id="headernav" aria-label="Nawigacja między kartami sukulentów">
+          <a href="adromischus-cooperii.html" class="nav-icon nav-icon--prev" aria-label="Poprzednia karta"></a>
+          <a href="spis-sukulentow.html" class="nav-icon nav-icon--home" aria-label="Spis sukulentów"></a>
+          <a href="agave-americana.html" class="nav-icon nav-icon--next" aria-label="Następna karta"></a>
+        </nav>
       </div>
-      <p><span style="font-size: 18pt; font-weight: bold;">Cotyledon ladismithiensis</span></p>
+      <p class="header-page-title">Cotyledon ladismithiensis</p>
     </div>
-    <div id="switchtoggles"></div>
-  </div>
+  </header>
 
-  <!-- CONTENT -->
-  <div id="content">
-    <h1><i></i></h1>
-  <div class="map-container">
-    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1HW4QsRdxIhubdhdnRYrZATzMcxQGHp8&ehbc=2E312F&noprof=1"
-     width="640" height="480"></iframe>
-  </div>
-  <section id="cotyledon-ladismithiensis" style="padding: 20px;">
+  <main>
+    <div class="content-stack">
+      <section class="content-card">
+        <div class="map-container" aria-label="Mapa występowania">
+          <iframe
+            src="https://www.google.com/maps/d/u/0/embed?mid=1HW4QsRdxIhubdhdnRYrZATzMcxQGHp8&ehbc=2E312F&noprof=1"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+  <section id="cotyledon-ladismithiensis" class="content-card section">
   <p><strong>Nazwa zwyczajowa:</strong> cotyledon ladismithiensis / niedźwiedzia łapka</p>
   <p><strong>Rodzina:</strong> Crassulaceae</p>
 
@@ -78,19 +81,17 @@
 </section>
   
 
-    <section id="kolekcja-prywatna" style="padding: 20px;">
+    <section id="kolekcja-prywatna" class="content-card section">
       <h2>📷 Zdjęcia z prywatnej kolekcji</h2>
       <p>Prezentowane poniżej fotografie pochodzą z prywatnych zbiorów...</p>
 
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <div style="flex: 1 1 300px; max-width: 400px;">
-          <img src="IMG/coty1.jpg" alt="Kaktus 1">       
-
-       
+      <div class="gallery">
+        <div class="gallery__item">
+          <img src="IMG/coty1.jpg" alt="Cotyledon ladismithiensis">
+        </div>
       </div>
     </section>
-</div>
-<script src="sukulenty.js"></script>
-
+    </div>
+  </main>
 </body>
 </html>

@@ -338,6 +338,102 @@ main h3 {
   margin-top: 0;
 }
 
+/* ===== Lightbox (kolekcja prywatna) ===== */
+#kolekcja-prywatna img {
+  cursor: zoom-in;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--header-z) + 10);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.lightbox-overlay[hidden] {
+  display: none;
+}
+
+.lightbox-dialog {
+  position: relative;
+  width: min(1100px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+}
+
+.lightbox-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.lightbox-btn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lightbox-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.lightbox-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+.lightbox-stage {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.35);
+  display: grid;
+  place-items: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: calc(100vh - 140px);
+  width: auto;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+
+.lightbox-nav {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  pointer-events: none;
+}
+
+.lightbox-hit {
+  pointer-events: auto;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.lightbox-hit:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: -6px;
+  border-radius: 14px;
+}
+
 /* Podcast-card ma własną typografię, ale bez „nadmiarowych” zieleni */
 .podcast-card h3 {
   color: var(--color-text);

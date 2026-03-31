@@ -5,46 +5,39 @@
    <link rel="icon" type="image/x-icon" href="../IMG/kaktus.ico">
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet"  href="kaktusy.css"  />
+   <link rel="stylesheet" href="../rozmaitosci/dodatki.css?v=5">
+   <link rel="stylesheet" href="kaktusy.css?v=1">
 </head>
 
 <body>
-<div id="header">
-   <div id="headerhead">  
-    <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="index.html">Kaktusy</a>&nbsp;&gt;</p>
-     <div id="headernav">
-      <a href="../kaktusy/echinopsis-subdenudata.html"
-       onmouseover="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev_orange.png'"
-       onmouseout="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev.png'"><img class="nav" id="prev" name="prev"  
-       src="../IMG/hm_btn_navigate_prev.png" alt="Previous page"></a>
-      <a href="index.html" 
-        onmouseover="document.getElementById('main').src = '../IMG/hm_btn_navigate_top_orange.png'" 
-        onmouseout="document.getElementById('main').src = '../IMG/hm_btn_navigate_top.png'"><img class="nav" id="main" name="main" 
-        src="../IMG/hm_btn_navigate_top.png" alt="main"></a>
-      <a href="../kaktusy/austrocylindropuntia-subulata.html"
-        onmouseover="document.getElementById('next').src = '../IMG/hm_btn_navigate_next_orange.png'" 
-        onmouseout="document.getElementById('next').src ='../IMG/hm_btn_navigate_next.png'">
-        <img class="nav" id="next" name="next" src="../IMG/hm_btn_navigate_next.png" alt="Next page"></a>
+<header id="header">
+  <div id="headerhead">
+    <div class="header-top">
+      <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="spis-kaktusow.html">Kaktusy</a>&nbsp;&gt;</p>
+      <nav id="headernav" aria-label="Nawigacja między kartami kaktusów">
+        <a href="echinopsis-subdenudata.html" class="nav-icon nav-icon--prev" aria-label="Poprzednia karta"></a>
+        <a href="spis-kaktusow.html" class="nav-icon nav-icon--home" aria-label="Spis kaktusów"></a>
+        <a href="austrocylindropuntia-subulata.html" class="nav-icon nav-icon--next" aria-label="Następna karta"></a>
+      </nav>
     </div>
-    <p><span style="font-size: 18pt; font-weight: bold;">Cylindropuntia imbricata</span></p>
-
+    <p class="header-page-title">Cylindropuntia imbricata</p>
   </div>
-  <!-- The following code displays Expand All/Collapse All links  below the header in topics containing toggles -->
-  <div id="switchtoggles"></div>
-</div>  
-<div id="content">
-     <!--ZOOMRESTART-->
-     <br>
-     <h1><i></i></h1>
-</div>
-<div class="map-container">
-      <iframe src="https://www.google.com/maps/d/embed?mid=17HuYO5AqxnwLriGr_39kCSkVKmitaYo&ehbc=2E312F&noprof=1"
-       width="640" height="480">
-      </iframe>
-</div>      
-  <div>
-        
-        <section id="cylindropuntia-imbricata" style="padding: 20px;">
+</header>
+
+<main>
+  <div class="content-stack">
+    <section class="content-card">
+      <div class="map-container" aria-label="Mapa występowania">
+        <iframe
+          src="https://www.google.com/maps/d/embed?mid=17HuYO5AqxnwLriGr_39kCSkVKmitaYo&ehbc=2E312F&noprof=1"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <section id="cylindropuntia-imbricata" class="content-card section">
   <p><strong>Nazwa zwyczajowa:</strong> opuncja skręcona / cholla</p>
   <p><strong>Rodzina:</strong> Cactaceae</p>
 
@@ -81,11 +74,7 @@
   <p>W środowisku naturalnym tworzy gęste bariery chroniące zwierzęta pustynne. W niektórych krajach uznawana za gatunek inwazyjny, regulowany przepisami.</p>
 </section>
 
-      </div>
-      
-      
-       <!--ZOOMSTOP-->
-</div>
-<script src="kaktusy.js"></script>
+  </div>
+</main>
 </body>
 </html>

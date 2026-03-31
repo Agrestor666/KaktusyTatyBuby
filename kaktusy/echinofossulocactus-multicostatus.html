@@ -5,47 +5,39 @@
    <link rel="icon" type="image/x-icon" href="../IMG/kaktus.ico">
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-   <link rel="stylesheet"  href="kaktusy.css"  />   
+   <link rel="stylesheet" href="../rozmaitosci/dodatki.css?v=5">
+   <link rel="stylesheet" href="kaktusy.css?v=1">
 </head>
 <body>
 
-<div id="header">
-   <div id="headerhead">  
-    <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="index.html">Kaktusy</a>&nbsp;&gt;</p>
-     <div id="headernav">
-      <a href="../kaktusy/austrocylindropuntia-subulata.html"
-       onmouseover="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev_orange.png'"
-       onmouseout="document.getElementById('prev').src = '../IMG/hm_btn_navigate_prev.png'"><img class="nav" id="prev" name="prev"  
-       src="../IMG/hm_btn_navigate_prev.png" alt="Previous page"></a>
-      <a href="index.html" 
-        onmouseover="document.getElementById('main').src = '../IMG/hm_btn_navigate_top_orange.png'" 
-        onmouseout="document.getElementById('main').src = '../IMG/hm_btn_navigate_top.png'"><img class="nav" id="main" name="main" 
-        src="../IMG/hm_btn_navigate_top.png" alt="main"></a>
-      <a href="../kaktusy/pilosocereus-azureus.html"
-        onmouseover="document.getElementById('next').src = '../IMG/hm_btn_navigate_next_orange.png'" 
-        onmouseout="document.getElementById('next').src ='../IMG/hm_btn_navigate_next.png'">
-        <img class="nav" id="next" name="next" src="../IMG/hm_btn_navigate_next.png" alt="Next page"></a>
+<header id="header">
+  <div id="headerhead">
+    <div class="header-top">
+      <p class="crumbs"><b>Navigation:</b>&nbsp;<a href="spis-kaktusow.html">Kaktusy</a>&nbsp;&gt;</p>
+      <nav id="headernav" aria-label="Nawigacja między kartami kaktusów">
+        <a href="austrocylindropuntia-subulata.html" class="nav-icon nav-icon--prev" aria-label="Poprzednia karta"></a>
+        <a href="spis-kaktusow.html" class="nav-icon nav-icon--home" aria-label="Spis kaktusów"></a>
+        <a href="pilosocereus-azureus.html" class="nav-icon nav-icon--next" aria-label="Następna karta"></a>
+      </nav>
     </div>
-    <p><span style="font-size: 18pt; font-weight: bold;">Echinofossulocactus multicostatus</span></p>
-
+    <p class="header-page-title">Echinofossulocactus multicostatus</p>
   </div>
-  <!-- The following code displays Expand All/Collapse All links  below the header in topics containing toggles -->
-  <div id="switchtoggles"></div>
-</div>  
-<div id="content">
-     <!--ZOOMRESTART-->
-     <br>
-     <h1><i></i></h1>     
-</div>
-<div class="map-container">
-  <iframe src="https://www.google.com/maps/d/embed?mid=1T5cwvq6rVmkKoFn8zJLR1mxQnztyR0c&ehbc=2E312F&noprof=1"
-   width="640" height="480">
-  </iframe>
-</div>
+</header>
 
-<div>
-        
- <section id="echinofossulocactus-multicostatus" style="padding: 20px;">
+<main>
+  <div class="content-stack">
+    <section class="content-card">
+      <div class="map-container" aria-label="Mapa występowania">
+        <iframe
+          src="https://www.google.com/maps/d/embed?mid=1T5cwvq6rVmkKoFn8zJLR1mxQnztyR0c&ehbc=2E312F&noprof=1"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <section id="echinofossulocactus-multicostatus" class="content-card section">
   <p><strong>Nazwa zwyczajowa:</strong> kaktus falisty / kaktus mózgowy</p>
   <p><strong>Rodzina:</strong> Cactaceae</p>
 
@@ -84,9 +76,9 @@
 
   <h3>🏆 Ciekawostki</h3>
   <p>Ze względu na niezwykle gęste i faliste żebra, bywa nazywany „kaktusem mózgowym”. Otrzymał Nagrodę Zasług Ogrodniczych RHS jako roślina kolekcjonerska.</p>
-</section>      
-</div>
+</section>
 
-<script src="kaktusy.js"></script>
+  </div>
+</main>
 </body>
 </html>
