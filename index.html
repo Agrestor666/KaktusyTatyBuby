@@ -48,10 +48,17 @@
       </div>
     </a>
 
-    <button type="button" class="info-tile" id="events2026Tile" aria-haspopup="dialog" aria-controls="events2026Modal">
+    <button type="button" class="info-tile" data-modal-target="events2026Modal" aria-haspopup="dialog" aria-controls="events2026Modal">
       <div class="tile-content">
         📅 Wydarzenia 2026<br>
         <small>Lista spotkań i wystaw</small>
+      </div>
+    </button>
+
+    <button type="button" class="info-tile" id="kontakt" data-modal-target="contactModal" aria-haspopup="dialog" aria-controls="contactModal">
+      <div class="tile-content">
+        ✉️ Napisz do mnie<br>
+        <small>Formularz kontaktowy</small>
       </div>
     </button>
 
@@ -117,7 +124,48 @@
         </div>
       </div>
     </div>
+
+    <div class="modal" id="contactModal" hidden role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+      <div class="modal__backdrop" data-modal-close="true"></div>
+      <div class="modal__panel modal__panel--contact" role="document">
+        <div class="modal__header">
+          <h2 class="modal__title" id="contactModalTitle">Napisz do mnie</h2>
+          <button type="button" class="modal__close" aria-label="Zamknij" data-modal-close="true">×</button>
+        </div>
+
+        <div class="modal__body">
+          <p class="contact-modal__lead">Masz pytanie o kaktusy lub sukulenty? Wyślij wiadomość — odpowiem najszybciej jak się da.</p>
+
+          <form class="contact-form" id="contactForm" action="https://hook.eu2.make.com/ujrctx9ngkmqufb6lb6acc1gw3kgh25v" method="post" novalidate>
+            <div class="contact-form__grid">
+              <div class="contact-field">
+                <label class="contact-field__label" for="contactEmail">Twój e-mail</label>
+                <input class="contact-field__control" id="contactEmail" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="np. jan@example.com">
+              </div>
+
+              <div class="contact-field contact-field--full">
+                <label class="contact-field__label" for="contactMessage">Wiadomość</label>
+                <textarea class="contact-field__control" id="contactMessage" name="message" rows="5" required placeholder="Napisz, w czym możemy pomóc…"></textarea>
+              </div>
+            </div>
+
+            <div class="contact-form__actions contact-form__actions--modal">
+              <button type="submit" class="contact-submit">Wyślij</button>
+            </div>
+
+            <div class="contact-form__meta" aria-live="polite">
+              <input type="text" name="website" class="contact-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <p class="contact-form__status" id="contactStatus"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </main>
+
+  <footer class="site-footer">
+    <button type="button" class="site-footer__btn" data-modal-target="contactModal" aria-haspopup="dialog" aria-controls="contactModal">Kontakt</button>
+  </footer>
 
   <script>
     (function () {
@@ -142,46 +190,60 @@
 
   <script>
     (function () {
-      const openBtn = document.getElementById("events2026Tile");
-      const modal = document.getElementById("events2026Modal");
-      if (!openBtn || !modal) return;
+      const openBtns = document.querySelectorAll("[data-modal-target]");
+      const modals = document.querySelectorAll(".modal[id]");
+      if (!openBtns.length || !modals.length) return;
 
-      const closeEls = modal.querySelectorAll("[data-modal-close='true']");
-      const panel = modal.querySelector(".modal__panel");
+      let activeModal = null;
       let lastActive = null;
 
-      const getFocusable = () =>
+      const getFocusable = (modal) =>
         Array.from(
           modal.querySelectorAll(
             "a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex='-1'])"
           )
         ).filter((el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"));
 
-      const open = () => {
+      const open = (modal) => {
+        if (activeModal && activeModal !== modal) close();
         lastActive = document.activeElement;
+        activeModal = modal;
         modal.hidden = false;
         document.body.classList.add("modal-open");
-        const focusables = getFocusable();
+        const panel = modal.querySelector(".modal__panel");
+        const focusables = getFocusable(modal);
         (focusables[0] || panel || modal).focus?.();
       };
 
       const close = () => {
-        modal.hidden = true;
+        if (!activeModal) return;
+        activeModal.hidden = true;
+        activeModal = null;
         document.body.classList.remove("modal-open");
         if (lastActive && lastActive.focus) lastActive.focus();
       };
 
-      openBtn.addEventListener("click", open);
-      closeEls.forEach((el) => el.addEventListener("click", close));
+      openBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-modal-target");
+          if (!id) return;
+          const modal = document.getElementById(id);
+          if (modal) open(modal);
+        });
+      });
 
-      modal.addEventListener("click", (e) => {
-        const target = e.target;
-        if (!(target instanceof Element)) return;
-        if (target.closest("[data-modal-close='true']")) close();
+      modals.forEach((modal) => {
+        modal.querySelectorAll("[data-modal-close='true']").forEach((el) => el.addEventListener("click", close));
+
+        modal.addEventListener("click", (e) => {
+          const target = e.target;
+          if (!(target instanceof Element)) return;
+          if (target.closest("[data-modal-close='true']")) close();
+        });
       });
 
       document.addEventListener("keydown", (e) => {
-        if (modal.hidden) return;
+        if (!activeModal || activeModal.hidden) return;
         if (e.key === "Escape") {
           e.preventDefault();
           close();
@@ -189,7 +251,7 @@
         }
         if (e.key !== "Tab") return;
 
-        const focusables = getFocusable();
+        const focusables = getFocusable(activeModal);
         if (!focusables.length) return;
 
         const first = focusables[0];
@@ -202,6 +264,95 @@
           e.preventDefault();
           first.focus();
         }
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const form = document.getElementById("contactForm");
+      if (!(form instanceof HTMLFormElement)) return;
+
+      const emailInput = document.getElementById("contactEmail");
+      const msgInput = document.getElementById("contactMessage");
+      if (!(emailInput instanceof HTMLInputElement) || !(msgInput instanceof HTMLTextAreaElement)) return;
+
+      const statusEl = document.getElementById("contactStatus");
+      const setStatus = (text, tone) => {
+        if (!(statusEl instanceof HTMLElement)) return;
+        statusEl.textContent = text;
+        statusEl.dataset.tone = tone || "";
+      };
+
+      const submitBtn = form.querySelector("button[type='submit']");
+      const setBusy = (busy) => {
+        if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = !!busy;
+        form.setAttribute("aria-busy", busy ? "true" : "false");
+      };
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const from = emailInput.value.trim();
+        const message = msgInput.value.trim();
+        if (!from || !message) {
+          setStatus("Uzupełnij e-mail i wiadomość.", "error");
+          return;
+        }
+
+        const honeypot = form.querySelector('input[name="website"]');
+        if (honeypot instanceof HTMLInputElement && honeypot.value.trim() !== "") {
+          setStatus("Wysłano. Dziękujemy!", "success");
+          form.reset();
+          return;
+        }
+
+        const url = form.action;
+        if (!url || !url.startsWith("https://hook.")) {
+          setStatus("Brak poprawnego adresu webhooka (Make).", "error");
+          return;
+        }
+
+        setBusy(true);
+        setStatus("Wysyłanie…", "info");
+
+        const body = new URLSearchParams();
+        body.set("email", from);
+        body.set("message", message);
+
+        fetch(url, {
+          method: "POST",
+          body,
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        })
+          .then(async (res) => {
+            const raw = await res.text();
+            const rawTrim = raw.trimStart();
+            const looksLikeHtml =
+              rawTrim.startsWith("<!doctype") ||
+              rawTrim.startsWith("<!DOCTYPE") ||
+              rawTrim.startsWith("<html") ||
+              rawTrim.startsWith("<HTML");
+
+            if (!res.ok) {
+              const details =
+                (looksLikeHtml ? "Serwer zwrócił HTML (sprawdź URL webhooka w Make)." : "") ||
+                (raw && raw.slice(0, 140)) ||
+                `HTTP ${res.status}`;
+              throw new Error(details.trim() || `HTTP ${res.status}`);
+            }
+            setStatus("Wysłano. Dziękujemy!", "success");
+            form.reset();
+          })
+          .catch((err) => {
+            const msg = err instanceof Error ? err.message : "Nie udało się wysłać.";
+            const hint =
+              msg === "Failed to fetch"
+                ? " (prawdopodobnie blokada CORS w przeglądarce — w Make włącz obsługę CORS dla webhooka lub użyj scenariusza z odpowiedzią z nagłówkiem Access-Control-Allow-Origin.)"
+                : "";
+            setStatus(`Nie udało się wysłać: ${msg}${hint}`, "error");
+          })
+          .finally(() => setBusy(false));
       });
     })();
   </script>
