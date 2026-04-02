@@ -24,6 +24,13 @@
   --glass-surface: rgba(255, 255, 255, 0.62);
   --glass-border: rgba(59, 111, 60, 0.14);
   --shadow-home-deep: 0 14px 40px rgba(47, 95, 51, 0.1);
+  --gradient-brand: linear-gradient(
+    105deg,
+    #2f5f33 0%,
+    var(--color-green-dark) 28%,
+    var(--color-green-mid) 62%,
+    #2f6b3f 100%
+  );
 }
 
 *,
@@ -74,8 +81,8 @@ body {
   }
 }
 
-/* Nagłówek */
-#header {
+/* ——— Nagłówek ——— */
+.site-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -95,7 +102,7 @@ body {
   overflow: hidden;
 }
 
-.header-top {
+.site-header__top {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,7 +114,7 @@ body {
   -webkit-backdrop-filter: blur(8px);
 }
 
-.header-brand {
+.site-header__brand {
   width: min(1100px, calc(100vw - 28px));
   padding: 6px 10px;
 }
@@ -131,16 +138,16 @@ body {
 }
 
 @media (min-width: 700px) {
-  #header {
+  .site-header {
     border-bottom-left-radius: 22px;
     border-bottom-right-radius: 22px;
   }
 
-  .header-top {
+  .site-header__top {
     padding: 16px 18px;
   }
 
-  .header-brand {
+  .site-header__brand {
     padding: 10px 14px;
   }
 }
@@ -158,20 +165,20 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  #header {
+  .site-header {
     animation: headerSheen 10s ease-in-out infinite;
   }
 }
 
-/* Główna treść — jeden blok zamiast konkurujących reguł */
-main {
+/* ——— Treść strony głównej ——— */
+main.home {
   margin: 0 auto;
   max-width: var(--home-content-max);
   padding: calc(var(--header-offset) + 18px) clamp(12px, 3.2vw, 22px) 32px;
 }
 
-/* Siatka kafelków Kaktusy / Sukulenty */
-.container {
+/* Kafelki: Kaktusy / Sukulenty */
+.home-categories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.25rem;
@@ -185,7 +192,7 @@ main {
   -webkit-backdrop-filter: blur(14px);
 }
 
-.container a {
+.home-categories a {
   position: relative;
   display: block;
   width: 100%;
@@ -200,11 +207,11 @@ main {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.25s ease;
 }
 
-.container a:hover {
+.home-categories a:hover {
   box-shadow: none;
 }
 
-.container img {
+.home-categories img {
   display: block;
   width: 100%;
   height: auto;
@@ -213,8 +220,8 @@ main {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container a:hover img,
-.container img:hover {
+.home-categories a:hover img,
+.home-categories img:hover {
   transform: scale(1.03);
   box-shadow: var(--shadow-hover);
 }
@@ -351,13 +358,7 @@ main {
   text-align: center;
   text-decoration: none;
   color: var(--color-header-text);
-  background: linear-gradient(
-    105deg,
-    #2f5f33 0%,
-    var(--color-green-dark) 28%,
-    var(--color-green-mid) 62%,
-    #2f6b3f 100%
-  );
+  background: var(--gradient-brand);
   border-radius: calc(var(--radius-lg) + 2px);
   border: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow: 0 10px 28px rgba(47, 95, 51, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -385,17 +386,17 @@ main {
     font-size: clamp(12px, 3.6vw, 14px);
   }
 
-  .container {
+  .home-categories {
     grid-template-columns: 1fr;
   }
 
-  .container a {
+  .home-categories a {
     display: flex;
     justify-content: center;
     width: 100%;
   }
 
-  .container img {
+  .home-categories img {
     max-width: 100%;
     margin: 0;
   }
@@ -412,23 +413,23 @@ main {
     background-image: none;
   }
 
-  #header {
+  .site-header {
     position: relative;
     box-shadow: none;
     animation: none;
   }
 
-  .header-top {
+  .site-header__top {
     color: #000;
     background: none;
   }
 
-  main {
+  main.home {
     padding-top: 10px;
     max-width: none;
   }
 
-  .container,
+  .home-categories,
   .synology-gallery {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -437,7 +438,7 @@ main {
     background: #fff;
   }
 
-  .container a {
+  .home-categories a {
     box-shadow: none;
     background: #fff;
   }
@@ -490,13 +491,7 @@ body.modal-open {
   gap: 12px;
   padding: 12px 14px;
   color: var(--color-header-text);
-  background: linear-gradient(
-    105deg,
-    #2f5f33 0%,
-    var(--color-green-dark) 28%,
-    var(--color-green-mid) 62%,
-    #2f6b3f 100%
-  );
+  background: var(--gradient-brand);
   border-top-left-radius: var(--radius-lg);
   border-top-right-radius: var(--radius-lg);
 }
@@ -740,13 +735,7 @@ textarea.contact-field__control {
   color: var(--color-header-text);
   font: inherit;
   font-weight: 800;
-  background: linear-gradient(
-    105deg,
-    #2f5f33 0%,
-    var(--color-green-dark) 28%,
-    var(--color-green-mid) 62%,
-    #2f6b3f 100%
-  );
+  background: var(--gradient-brand);
   box-shadow: 0 10px 28px rgba(47, 95, 51, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.18);
   transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.2s ease;
 }

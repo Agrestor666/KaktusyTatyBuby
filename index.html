@@ -11,24 +11,24 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <header id="header">
-    <div class="header-top">
-      <div class="header-brand">
+  <header class="site-header">
+    <div class="site-header__top">
+      <div class="site-header__brand">
         <h1 class="site-title">Kaktusy i Sukulenty</h1>
         <p class="site-tagline">Zielona baza wiedzy, inspiracji i wydarzeń</p>
       </div>
     </div>
   </header>
 
-  <main>
-    <div class="container">
+  <main class="home">
+    <section class="home-categories" aria-label="Przejdź do działów">
       <a href="kaktusy/spis-kaktusow.html" class="hover-caption" data-caption="🌵 Kaktusy – Królowie pustyni">
         <img src="IMG/Kaktusy.png" alt="Kaktusy">
       </a>
       <a href="sukulenty/spis-sukulentow.html" class="hover-caption" data-caption="🌿 Sukulenty – Mistrzowie magazynowania wody">
         <img src="IMG/Sukulenty.png" alt="Sukulenty">
       </a>
-    </div>
+    </section>
 
     <section class="synology-gallery" aria-label="Podgląd galerii zdjęć">
       <a href="http://ptracz.quickconnect.to/mo/sharing/qgRyVKzSM" target="_blank" rel="noopener noreferrer">
@@ -42,25 +42,25 @@
       </a>
     </section>
 
-    <a href="./rozmaitosci/dodatkowe.html" class="info-tile">
-      <div class="tile-content">
-        🧪 Rozmaitości<br>
-      </div>
-    </a>
+    <section class="home-actions" aria-label="Dodatkowe linki i informacje">
+      <a href="./rozmaitosci/dodatkowe.html" class="info-tile">
+        <div class="tile-content">🧪 Rozmaitości</div>
+      </a>
 
-    <button type="button" class="info-tile" data-modal-target="events2026Modal" aria-haspopup="dialog" aria-controls="events2026Modal">
-      <div class="tile-content">
-        📅 Wydarzenia 2026<br>
-        <small>Lista spotkań i wystaw</small>
-      </div>
-    </button>
+      <button type="button" class="info-tile" data-modal-target="events2026Modal" aria-haspopup="dialog" aria-controls="events2026Modal">
+        <div class="tile-content">
+          📅 Wydarzenia 2026<br>
+          <small>Lista spotkań i wystaw</small>
+        </div>
+      </button>
 
-    <button type="button" class="info-tile" id="kontakt" data-modal-target="contactModal" aria-haspopup="dialog" aria-controls="contactModal">
-      <div class="tile-content">
-        ✉️ Napisz do mnie<br>
-        <small>Formularz kontaktowy</small>
-      </div>
-    </button>
+      <button type="button" class="info-tile" id="kontakt" data-modal-target="contactModal" aria-haspopup="dialog" aria-controls="contactModal">
+        <div class="tile-content">
+          ✉️ Napisz do mnie<br>
+          <small>Formularz kontaktowy</small>
+        </div>
+      </button>
+    </section>
 
     <div class="modal" id="events2026Modal" hidden role="dialog" aria-modal="true" aria-labelledby="events2026Title">
       <div class="modal__backdrop" data-modal-close="true"></div>
@@ -69,7 +69,6 @@
           <h2 class="modal__title" id="events2026Title">Wydarzenia 2026</h2>
           <button type="button" class="modal__close" aria-label="Zamknij" data-modal-close="true">×</button>
         </div>
-
         <div class="modal__body">
           <ul class="events-list">
             <li class="events-list__item">
@@ -79,7 +78,6 @@
                 <div class="events-list__meta">Centrum Dagleja</div>
               </div>
             </li>
-                                  
             <li class="events-list__item">
               <div class="events-list__date">01–03.05.2026 (pt–nd)</div>
               <div class="events-list__details">
@@ -87,7 +85,6 @@
                 <div class="events-list__meta">Ustroń–Jaszowiec</div>
               </div>
             </li>
-
             <li class="events-list__item">
               <div class="events-list__date">15–17.05.2026</div>
               <div class="events-list__details">
@@ -95,8 +92,6 @@
                 <div class="events-list__meta">Kraków, Ogród Botaniczny (PTMK Kraków i Śląsk)</div>
               </div>
             </li>
-
-                        
             <li class="events-list__item">
               <div class="events-list__date">05–07.06.2026</div>
               <div class="events-list__details">
@@ -104,7 +99,6 @@
                 <div class="events-list__meta">Łódź, Palmiarnia Łódzka</div>
               </div>
             </li>
-
             <li class="events-list__item">
               <div class="events-list__date">09–14.06.2026</div>
               <div class="events-list__details">
@@ -112,7 +106,6 @@
                 <div class="events-list__meta">Gliwice (giełda roślin: 12–14.06)</div>
               </div>
             </li>
-
             <li class="events-list__item">
               <div class="events-list__date">20–21.06.2026 (sob–nd)</div>
               <div class="events-list__details">
@@ -132,10 +125,8 @@
           <h2 class="modal__title" id="contactModalTitle">Napisz do mnie</h2>
           <button type="button" class="modal__close" aria-label="Zamknij" data-modal-close="true">×</button>
         </div>
-
         <div class="modal__body">
           <p class="contact-modal__lead">Masz pytanie o kaktusy lub sukulenty? Wyślij wiadomość — odpowiem najszybciej jak się da.</p>
-
           <form
             class="contact-form"
             id="contactForm"
@@ -149,22 +140,18 @@
                 <label class="contact-field__label" for="contactEmail">Twój e-mail</label>
                 <input class="contact-field__control" id="contactEmail" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="np. jan@example.com">
               </div>
-
               <div class="contact-field contact-field--full">
                 <label class="contact-field__label" for="contactMessage">Wiadomość</label>
                 <textarea class="contact-field__control" id="contactMessage" name="message" rows="5" required placeholder="Napisz, w czym możemy pomóc…"></textarea>
               </div>
-
               <div class="contact-field contact-field--full contact-turnstile-wrap">
                 <span class="contact-field__label">Weryfikacja</span>
                 <div id="turnstileWidget" class="contact-turnstile"></div>
               </div>
             </div>
-
             <div class="contact-form__actions contact-form__actions--modal">
               <button type="submit" class="contact-submit">Wyślij</button>
             </div>
-
             <div class="contact-form__meta" aria-live="polite">
               <input type="text" name="website" class="contact-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
               <p class="contact-form__status" id="contactStatus"></p>
@@ -179,284 +166,7 @@
     <button type="button" class="site-footer__btn" data-modal-target="contactModal" aria-haspopup="dialog" aria-controls="contactModal">Kontakt</button>
   </footer>
 
-  <script>
-    (function () {
-      const root = document.documentElement;
-      const header = document.getElementById("header");
-      if (!header) return;
-
-      const setOffset = () => {
-        const h = Math.ceil(header.getBoundingClientRect().height);
-        root.style.setProperty("--header-offset", `${h}px`);
-      };
-
-      const schedule = () => requestAnimationFrame(setOffset);
-
-      window.addEventListener("load", schedule, { passive: true });
-      window.addEventListener("resize", schedule, { passive: true });
-
-      // Start immediately (in case of bfcache / fast paint)
-      schedule();
-    })();
-  </script>
-
-  <script>
-    (function () {
-      const openBtns = document.querySelectorAll("[data-modal-target]");
-      const modals = document.querySelectorAll(".modal[id]");
-      if (!openBtns.length || !modals.length) return;
-
-      let activeModal = null;
-      let lastActive = null;
-
-      const getFocusable = (modal) =>
-        Array.from(
-          modal.querySelectorAll(
-            "a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex='-1'])"
-          )
-        ).filter((el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"));
-
-      const open = (modal) => {
-        if (activeModal && activeModal !== modal) close();
-        lastActive = document.activeElement;
-        activeModal = modal;
-        modal.hidden = false;
-        document.body.classList.add("modal-open");
-        const panel = modal.querySelector(".modal__panel");
-        const focusables = getFocusable(modal);
-        (focusables[0] || panel || modal).focus?.();
-      };
-
-      const close = () => {
-        if (!activeModal) return;
-        activeModal.hidden = true;
-        activeModal = null;
-        document.body.classList.remove("modal-open");
-        if (lastActive && lastActive.focus) lastActive.focus();
-      };
-
-      openBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const id = btn.getAttribute("data-modal-target");
-          if (!id) return;
-          const modal = document.getElementById(id);
-          if (modal) open(modal);
-        });
-      });
-
-      modals.forEach((modal) => {
-        modal.querySelectorAll("[data-modal-close='true']").forEach((el) => el.addEventListener("click", close));
-
-        modal.addEventListener("click", (e) => {
-          const target = e.target;
-          if (!(target instanceof Element)) return;
-          if (target.closest("[data-modal-close='true']")) close();
-        });
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (!activeModal || activeModal.hidden) return;
-        if (e.key === "Escape") {
-          e.preventDefault();
-          close();
-          return;
-        }
-        if (e.key !== "Tab") return;
-
-        const focusables = getFocusable(activeModal);
-        if (!focusables.length) return;
-
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      });
-    })();
-  </script>
-
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
-
-  <script>
-    (function () {
-      const form = document.getElementById("contactForm");
-      const contactModal = document.getElementById("contactModal");
-      const turnstileHost = document.getElementById("turnstileWidget");
-      if (!(form instanceof HTMLFormElement) || !turnstileHost) return;
-
-      const emailInput = document.getElementById("contactEmail");
-      const msgInput = document.getElementById("contactMessage");
-      if (!(emailInput instanceof HTMLInputElement) || !(msgInput instanceof HTMLTextAreaElement)) return;
-
-      const statusEl = document.getElementById("contactStatus");
-      const setStatus = (text, tone) => {
-        if (!(statusEl instanceof HTMLElement)) return;
-        statusEl.textContent = text;
-        statusEl.dataset.tone = tone || "";
-      };
-
-      const submitBtn = form.querySelector("button[type='submit']");
-      const setBusy = (busy) => {
-        if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = !!busy;
-        form.setAttribute("aria-busy", busy ? "true" : "false");
-      };
-
-      let turnstileWidgetId = null;
-      let turnstileRenderPromise = null;
-
-      const siteKeyRaw = form.getAttribute("data-turnstile-sitekey") || "";
-      const siteKeyOk =
-        siteKeyRaw.length >= 20 &&
-        !/PASTE_|YOUR_|PLACEHOLDER/i.test(siteKeyRaw);
-
-      const waitTurnstile = () =>
-        new Promise((resolve) => {
-          if (window.turnstile) {
-            resolve();
-            return;
-          }
-          let n = 0;
-          const t = window.setInterval(() => {
-            n += 1;
-            if (window.turnstile) {
-              window.clearInterval(t);
-              resolve();
-            } else if (n > 200) {
-              window.clearInterval(t);
-              resolve();
-            }
-          }, 50);
-        });
-
-      const ensureTurnstile = () => {
-        if (!siteKeyOk) return Promise.resolve();
-        if (turnstileWidgetId !== null) return Promise.resolve();
-        if (turnstileRenderPromise) return turnstileRenderPromise;
-
-        turnstileRenderPromise = waitTurnstile().then(() => {
-          if (!window.turnstile || turnstileWidgetId !== null) return;
-          turnstileWidgetId = window.turnstile.render(turnstileHost, {
-            sitekey: siteKeyRaw,
-            theme: "light",
-          });
-        });
-
-        return turnstileRenderPromise;
-      };
-
-      if (contactModal) {
-        const obs = new MutationObserver(() => {
-          if (contactModal.hidden) return;
-          void ensureTurnstile();
-        });
-        obs.observe(contactModal, { attributes: true, attributeFilter: ["hidden"] });
-      }
-
-      const getTurnstileToken = () => {
-        if (turnstileWidgetId === null || !window.turnstile) return "";
-        try {
-          return window.turnstile.getResponse(turnstileWidgetId) || "";
-        } catch {
-          return "";
-        }
-      };
-
-      const resetTurnstile = () => {
-        if (turnstileWidgetId === null || !window.turnstile) return;
-        try {
-          window.turnstile.reset(turnstileWidgetId);
-        } catch {
-          /* ignore */
-        }
-      };
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        if (!siteKeyOk) {
-          setStatus("Wklej Site Key Turnstile w index.html (atrybut data-turnstile-sitekey na formularzu).", "error");
-          return;
-        }
-
-        const from = emailInput.value.trim();
-        const message = msgInput.value.trim();
-        if (!from || !message) {
-          setStatus("Uzupełnij e-mail i wiadomość.", "error");
-          return;
-        }
-
-        const honeypot = form.querySelector('input[name="website"]');
-        if (honeypot instanceof HTMLInputElement && honeypot.value.trim() !== "") {
-          setStatus("Wysłano. Dziękujemy!", "success");
-          form.reset();
-          resetTurnstile();
-          return;
-        }
-
-        const url = form.action;
-        if (!url || !url.startsWith("https://hook.")) {
-          setStatus("Brak poprawnego adresu webhooka (Make).", "error");
-          return;
-        }
-
-        void ensureTurnstile().then(() => {
-          const token = getTurnstileToken();
-          if (!token) {
-            setStatus("Zaznacz weryfikację Cloudflare (pole powyżej przycisku Wyślij).", "error");
-            return;
-          }
-
-          setBusy(true);
-          setStatus("Wysyłanie…", "info");
-
-          const body = new URLSearchParams();
-          body.set("email", from);
-          body.set("message", message);
-          body.set("cf-turnstile-response", token);
-
-          fetch(url, {
-            method: "POST",
-            body,
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          })
-            .then(async (res) => {
-              const raw = await res.text();
-              const rawTrim = raw.trimStart();
-              const looksLikeHtml =
-                rawTrim.startsWith("<!doctype") ||
-                rawTrim.startsWith("<!DOCTYPE") ||
-                rawTrim.startsWith("<html") ||
-                rawTrim.startsWith("<HTML");
-
-              if (!res.ok) {
-                const details =
-                  (looksLikeHtml ? "Serwer zwrócił HTML (sprawdź URL webhooka w Make)." : "") ||
-                  (raw && raw.slice(0, 140)) ||
-                  `HTTP ${res.status}`;
-                throw new Error(details.trim() || `HTTP ${res.status}`);
-              }
-              setStatus("Wysłano. Dziękujemy!", "success");
-              form.reset();
-              resetTurnstile();
-            })
-            .catch((err) => {
-              const msg = err instanceof Error ? err.message : "Nie udało się wysłać.";
-              const hint =
-                msg === "Failed to fetch"
-                  ? " (prawdopodobnie blokada CORS w przeglądarce — w Make włącz obsługę CORS dla webhooka lub użyj scenariusza z odpowiedzią z nagłówkiem Access-Control-Allow-Origin.)"
-                  : "";
-              setStatus(`Nie udało się wysłać: ${msg}${hint}`, "error");
-              resetTurnstile();
-            })
-            .finally(() => setBusy(false));
-        });
-      });
-    })();
-  </script>
+  <script src="home.js" defer></script>
 </body>
 </html>

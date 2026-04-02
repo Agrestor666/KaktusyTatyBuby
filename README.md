@@ -6,11 +6,21 @@ Statyczna strona (HTML/CSS/JS) z bazą wiedzy o kaktusach i sukulentach oraz sek
 
 - `index.html` — strona główna.
 - `main.css` — wspólne style dla strony głównej.
+- `home.js` — logika strony głównej: dynamiczny offset pod fixed header, modale (wydarzenia, kontakt), wysyłka formularza kontaktowego i Cloudflare Turnstile.
 - `kaktusy/` — podstrony kaktusów + `spis-kaktusow.html` i `kaktusy.css`.
 - `sukulenty/` — podstrony sukulentów + `spis-sukulentow.html` i `sukulenty.css`.
 - `rozmaitosci/` — sekcja dodatkowa (`dodatkowe.html`) + zasoby (`dodatki.css`, `dodatki.js`, `lightbox.js`).
 - `IMG/` oraz podkatalogi `*/IMG/` — grafiki, favicony itp.
 - `sitemap.xml` — mapa strony dla wyszukiwarek (docelowa domena: `https://kaktusy-i-sukulenty.com/`).
+- `contact.php` — opcjonalny endpoint PHP do wysyłki wiadomości mailem z serwera (gdy nie używasz zewnętrznego webhooka).
+
+## Formularz kontaktowy (e-mail)
+
+Na stronie głównej kontakt jest w **modalu** („Napisz do mnie” / „Kontakt” w stopce). Po wypełnieniu pola **e-mail** i **wiadomości** oraz przejściu weryfikacji **Cloudflare Turnstile** przeglądarka wysyła żądanie `POST` (przez `fetch` w `home.js`) na **webhook scenariusza Make** — adres jest w atrybucie `action` formularza w `index.html`. W samym Make ustawiasz dalszy krok scenariusza tak, aby wiadomość trafiała na **Twoją skrzynkę** (np. moduł e-mail, powiadomienie, zapis do arkusza).
+
+- **Klucz Turnstile** (site key) jest w atrybucie `data-turnstile-sitekey` tego samego formularza; po stronie Make musi być zweryfikowany token (lub wyłączona weryfikacja w scenariuszu — mniej bezpieczne).
+- **CORS:** jeśli przeglądarka zgłosi błąd przy wysyłce, w Make włącz obsługę CORS dla webhooka albo zwracaj nagłówek `Access-Control-Allow-Origin` zgodny z domeną strony.
+- **Alternatywa:** przy hostingu z PHP możesz kierować formularz na `contact.php` (wtedy trzeba dostosować `home.js` / sam formularz do tego endpointu i ewentualnie innej weryfikacji spamu).
 
 ## Jak uruchomić lokalnie
 
