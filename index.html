@@ -136,7 +136,14 @@
         <div class="modal__body">
           <p class="contact-modal__lead">Masz pytanie o kaktusy lub sukulenty? Wyślij wiadomość — odpowiem najszybciej jak się da.</p>
 
-          <form class="contact-form" id="contactForm" action="https://hook.eu2.make.com/ujrctx9ngkmqufb6lb6acc1gw3kgh25v" method="post" novalidate>
+          <form
+            class="contact-form"
+            id="contactForm"
+            action="https://hook.eu2.make.com/ujrctx9ngkmqufb6lb6acc1gw3kgh25v"
+            method="post"
+            novalidate
+            data-turnstile-sitekey="0x4AAAAAACzqyrcCajycqw5C"
+          >
             <div class="contact-form__grid">
               <div class="contact-field">
                 <label class="contact-field__label" for="contactEmail">Twój e-mail</label>
@@ -146,6 +153,11 @@
               <div class="contact-field contact-field--full">
                 <label class="contact-field__label" for="contactMessage">Wiadomość</label>
                 <textarea class="contact-field__control" id="contactMessage" name="message" rows="5" required placeholder="Napisz, w czym możemy pomóc…"></textarea>
+              </div>
+
+              <div class="contact-field contact-field--full contact-turnstile-wrap">
+                <span class="contact-field__label">Weryfikacja</span>
+                <div id="turnstileWidget" class="contact-turnstile"></div>
               </div>
             </div>
 
@@ -268,10 +280,14 @@
     })();
   </script>
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+
   <script>
     (function () {
       const form = document.getElementById("contactForm");
-      if (!(form instanceof HTMLFormElement)) return;
+      const contactModal = document.getElementById("contactModal");
+      const turnstileHost = document.getElementById("turnstileWidget");
+      if (!(form instanceof HTMLFormElement) || !turnstileHost) return;
 
       const emailInput = document.getElementById("contactEmail");
       const msgInput = document.getElementById("contactMessage");
@@ -290,8 +306,82 @@
         form.setAttribute("aria-busy", busy ? "true" : "false");
       };
 
+      let turnstileWidgetId = null;
+      let turnstileRenderPromise = null;
+
+      const siteKeyRaw = form.getAttribute("data-turnstile-sitekey") || "";
+      const siteKeyOk =
+        siteKeyRaw.length >= 20 &&
+        !/PASTE_|YOUR_|PLACEHOLDER/i.test(siteKeyRaw);
+
+      const waitTurnstile = () =>
+        new Promise((resolve) => {
+          if (window.turnstile) {
+            resolve();
+            return;
+          }
+          let n = 0;
+          const t = window.setInterval(() => {
+            n += 1;
+            if (window.turnstile) {
+              window.clearInterval(t);
+              resolve();
+            } else if (n > 200) {
+              window.clearInterval(t);
+              resolve();
+            }
+          }, 50);
+        });
+
+      const ensureTurnstile = () => {
+        if (!siteKeyOk) return Promise.resolve();
+        if (turnstileWidgetId !== null) return Promise.resolve();
+        if (turnstileRenderPromise) return turnstileRenderPromise;
+
+        turnstileRenderPromise = waitTurnstile().then(() => {
+          if (!window.turnstile || turnstileWidgetId !== null) return;
+          turnstileWidgetId = window.turnstile.render(turnstileHost, {
+            sitekey: siteKeyRaw,
+            theme: "light",
+          });
+        });
+
+        return turnstileRenderPromise;
+      };
+
+      if (contactModal) {
+        const obs = new MutationObserver(() => {
+          if (contactModal.hidden) return;
+          void ensureTurnstile();
+        });
+        obs.observe(contactModal, { attributes: true, attributeFilter: ["hidden"] });
+      }
+
+      const getTurnstileToken = () => {
+        if (turnstileWidgetId === null || !window.turnstile) return "";
+        try {
+          return window.turnstile.getResponse(turnstileWidgetId) || "";
+        } catch {
+          return "";
+        }
+      };
+
+      const resetTurnstile = () => {
+        if (turnstileWidgetId === null || !window.turnstile) return;
+        try {
+          window.turnstile.reset(turnstileWidgetId);
+        } catch {
+          /* ignore */
+        }
+      };
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        if (!siteKeyOk) {
+          setStatus("Wklej Site Key Turnstile w index.html (atrybut data-turnstile-sitekey na formularzu).", "error");
+          return;
+        }
 
         const from = emailInput.value.trim();
         const message = msgInput.value.trim();
@@ -304,6 +394,7 @@
         if (honeypot instanceof HTMLInputElement && honeypot.value.trim() !== "") {
           setStatus("Wysłano. Dziękujemy!", "success");
           form.reset();
+          resetTurnstile();
           return;
         }
 
@@ -313,46 +404,57 @@
           return;
         }
 
-        setBusy(true);
-        setStatus("Wysyłanie…", "info");
+        void ensureTurnstile().then(() => {
+          const token = getTurnstileToken();
+          if (!token) {
+            setStatus("Zaznacz weryfikację Cloudflare (pole powyżej przycisku Wyślij).", "error");
+            return;
+          }
 
-        const body = new URLSearchParams();
-        body.set("email", from);
-        body.set("message", message);
+          setBusy(true);
+          setStatus("Wysyłanie…", "info");
 
-        fetch(url, {
-          method: "POST",
-          body,
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        })
-          .then(async (res) => {
-            const raw = await res.text();
-            const rawTrim = raw.trimStart();
-            const looksLikeHtml =
-              rawTrim.startsWith("<!doctype") ||
-              rawTrim.startsWith("<!DOCTYPE") ||
-              rawTrim.startsWith("<html") ||
-              rawTrim.startsWith("<HTML");
+          const body = new URLSearchParams();
+          body.set("email", from);
+          body.set("message", message);
+          body.set("cf-turnstile-response", token);
 
-            if (!res.ok) {
-              const details =
-                (looksLikeHtml ? "Serwer zwrócił HTML (sprawdź URL webhooka w Make)." : "") ||
-                (raw && raw.slice(0, 140)) ||
-                `HTTP ${res.status}`;
-              throw new Error(details.trim() || `HTTP ${res.status}`);
-            }
-            setStatus("Wysłano. Dziękujemy!", "success");
-            form.reset();
+          fetch(url, {
+            method: "POST",
+            body,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
           })
-          .catch((err) => {
-            const msg = err instanceof Error ? err.message : "Nie udało się wysłać.";
-            const hint =
-              msg === "Failed to fetch"
-                ? " (prawdopodobnie blokada CORS w przeglądarce — w Make włącz obsługę CORS dla webhooka lub użyj scenariusza z odpowiedzią z nagłówkiem Access-Control-Allow-Origin.)"
-                : "";
-            setStatus(`Nie udało się wysłać: ${msg}${hint}`, "error");
-          })
-          .finally(() => setBusy(false));
+            .then(async (res) => {
+              const raw = await res.text();
+              const rawTrim = raw.trimStart();
+              const looksLikeHtml =
+                rawTrim.startsWith("<!doctype") ||
+                rawTrim.startsWith("<!DOCTYPE") ||
+                rawTrim.startsWith("<html") ||
+                rawTrim.startsWith("<HTML");
+
+              if (!res.ok) {
+                const details =
+                  (looksLikeHtml ? "Serwer zwrócił HTML (sprawdź URL webhooka w Make)." : "") ||
+                  (raw && raw.slice(0, 140)) ||
+                  `HTTP ${res.status}`;
+                throw new Error(details.trim() || `HTTP ${res.status}`);
+              }
+              setStatus("Wysłano. Dziękujemy!", "success");
+              form.reset();
+              resetTurnstile();
+            })
+            .catch((err) => {
+              const msg = err instanceof Error ? err.message : "Nie udało się wysłać.";
+              const hint =
+                msg === "Failed to fetch"
+                  ? " (prawdopodobnie blokada CORS w przeglądarce — w Make włącz obsługę CORS dla webhooka lub użyj scenariusza z odpowiedzią z nagłówkiem Access-Control-Allow-Origin.)"
+                  : "";
+              setStatus(`Nie udało się wysłać: ${msg}${hint}`, "error");
+              resetTurnstile();
+            })
+            .finally(() => setBusy(false));
+        });
       });
     })();
   </script>

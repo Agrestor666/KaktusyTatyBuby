@@ -550,6 +550,17 @@ body.modal-open {
   font-size: 0.98rem;
 }
 
+.contact-turnstile-wrap .contact-field__label {
+  margin-bottom: 8px;
+}
+
+.contact-turnstile {
+  min-height: 68px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .modal__body .contact-form__actions--modal {
   grid-template-columns: 1fr;
 }
