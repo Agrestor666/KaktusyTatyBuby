@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" type="image/x-icon" href="../IMG/kaktus.ico">
-  <link rel="stylesheet" href="dodatki.css?v=5">
+  <link rel="stylesheet" href="dodatki.css?v=6">
   <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
 </head>
 <body>
@@ -87,6 +87,12 @@
     <li>🟤 <strong>Torf (10%)</strong> – torf wysoki (kwaśny), lekki i ubogi w składniki odżywcze. Torf niski lub z dodatkiem nawozów nie nadaje się do podłoża dla kaktusów – zatrzymuje zbyt dużo wilgoci.</li>
     <li>⚪ <strong>Perlit (10%)</strong> – biały, porowaty materiał (frakcja 3–6 mm), poprawiający przepuszczalność i napowietrzenie gleby. Unikaj perlitu przemysłowego (np. do izolacji) – może być toksyczny dla roślin.</li>
   </ul>
+  <div class="soil-lazy-callout" role="note">
+    <p>
+      Dla leniwych— gotową mieszankę o zbliżonym składzie sprzedaje
+      <a href="https://zielony-parapet.pl/podloza-marki-zielony-parapet/4864-podloze-dla-kaktusow-i-sukulentow-doktor-grunt-6058086815944.html" target="_blank" rel="noopener noreferrer">Zielony Parapet — podłoże Doktor Grunt dla kaktusów i sukulentów</a>.
+    </p>
+  </div>
   <p style="margin-top: 1em; font-size: 0.95em; color: #555;">
     <em>💡 Wskazówka:</em> Zawsze wybieraj składniki przeznaczone do ogrodnictwa lub akwarystyki. Produkty z marketów budowlanych mogą być tańsze, ale często zawierają zanieczyszczenia, które szkodzą roślinom pustynnym.
   </p>
@@ -147,14 +153,24 @@
       </strong> – sklep kolekcjonerski z bogatą ofertą rzadkich, „artystycznych” form kaktusów.
     </li>
     <li>
-      <strong>🇵🇱🏡 
-        <a href="https://www.cocaflora.com/pl/c/KAKTUSY/84" target="_blank">CocaFlora</a>
-      </strong> – polski sklep internetowy z kaktusami i innymi roślinami do domu.
+      <strong>🇵🇱🪴 
+        <a href="https://zielony-parapet.pl/13-kaktusy" target="_blank">Zielony Parapet — kaktusy</a>
+      </strong> – polski sklep z roślinami doniczkowymi; osobna kategoria kaktusów, także podłoża i akcesoria.
     </li>
     <li>
       <strong>🇵🇱🍬 
         <a href="https://candycacti.com/main-pol.html" target="_blank">Candy Cacti</a>
       </strong> – specjalistyczny sklep z „cukierkowymi”, kolekcjonerskimi kaktusami.
+    </li>
+    <li>
+      <strong>🇩🇪🧪 
+        <a href="https://www.kaktus-koehres.de/shop/" target="_blank">Koehres-Kakteen</a>
+      </strong> – niemiecki sklep z ogromnym wyborem nasion kaktusów, sukulentów i mesembów; klasyk wśród kolekcjonerów, wersja strony m.in. po angielsku.
+    </li>
+    <li>
+      <strong>🇺🇸🌵 
+        <a href="https://mesagarden.com/" target="_blank">Mesa Garden</a>
+      </strong> – amerykańskie nasiona kaktusów i sukulentów z danymi kolekcjonerskimi; przy zamówieniach zagranicznych warto sprawdzić certyfikaty fitosanitarne i dostępność wysyłki.
     </li>
     <li>
       <strong>🇨🇿⛰️ 
@@ -233,14 +249,10 @@
   project-id="kaktus-chatbot"
   agent-id="3e0c8e73-4bf3-42ba-beb8-7e9604ffa66b"
   language-code="pl"
-  max-query-length="-1">
+  max-query-length="-1"
+  allow-feedback="all">
   <df-messenger-chat-bubble chat-title="Kolczak" chat-icon="IMG/kolczak.png"></df-messenger-chat-bubble>
 </df-messenger>
-<script>
-  document.querySelector("df-messenger")?.addEventListener("df-response-received", (e) => {
-    console.log(e.detail.response.queryResult.responseMessages);
-  });
-</script>
 <style>
   df-messenger {
     z-index: 999;

@@ -142,6 +142,47 @@ main {
   border-radius: 6px;
 }
 
+/* Wyróżnienie: gotowe podłoże w sklepie (rozmaitości / składniki) */
+.soil-lazy-callout {
+  margin-top: 1.15rem;
+  padding: 0.95rem 1.05rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(59, 111, 60, 0.32);
+  border-left: 4px solid var(--color-green-dark);
+  background: linear-gradient(
+    120deg,
+    rgba(123, 211, 137, 0.2) 0%,
+    rgba(255, 255, 255, 0.55) 55%,
+    rgba(239, 248, 240, 0.65) 100%
+  );
+  box-shadow: 0 2px 12px rgba(47, 95, 51, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.soil-lazy-callout p {
+  margin: 0;
+  line-height: 1.55;
+  font-size: 1.02em;
+}
+
+.soil-lazy-callout__label {
+  display: inline-block;
+  margin-right: 0.15em;
+  padding: 0.12em 0.45em 0.14em;
+  border-radius: 6px;
+  background: var(--color-green-dark);
+  color: var(--color-header-text);
+  font-size: 0.88em;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: 0.08em;
+}
+
+.soil-lazy-callout a {
+  font-weight: 650;
+  text-decoration-color: rgba(59, 111, 60, 0.55);
+}
+
 .content-subtitle {
   margin: 0 0 14px;
   color: var(--color-text-muted);

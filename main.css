@@ -636,8 +636,34 @@ button.info-tile:focus-visible {
   line-height: 1.35;
 }
 
-.events-list__meta::before {
-  content: "📍 ";
+.events-list__item[data-country] .events-list__meta::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 19px;
+  margin-right: 0.45em;
+  vertical-align: -0.28em;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14);
+}
+
+.events-list__item[data-country="pl"] .events-list__meta::before {
+  background-image: url("IMG/flags/pl.svg");
+}
+
+.events-list__item[data-country="de"] .events-list__meta::before {
+  background-image: url("IMG/flags/de.svg");
+}
+
+.events-list__item[data-country="cz"] .events-list__meta::before {
+  background-image: url("IMG/flags/cz.svg");
+}
+
+.events-list__item[data-country="at"] .events-list__meta::before {
+  background-image: url("IMG/flags/at.svg");
 }
 
 @media (min-width: 700px) {
