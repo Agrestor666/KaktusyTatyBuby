@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kaktusy-i-sukulenty.com/sitemap.xml

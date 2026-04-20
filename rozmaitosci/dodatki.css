@@ -75,6 +75,91 @@ main {
   gap: 18px;
 }
 
+/* Spis sekcji (Rozmaitości / dodatkowe.html) */
+.page-toc {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: calc(var(--radius-lg) + 4px);
+  box-shadow: var(--shadow-home-deep), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: clamp(12px, 2.5vw, 18px) clamp(14px, 3vw, 20px);
+}
+
+.page-toc__label {
+  margin: 0 0 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-green-dark);
+}
+
+.page-toc__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-toc__list a {
+  display: inline-block;
+  padding: 0.38em 0.75em 0.42em;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(59, 111, 60, 0.22);
+  box-shadow: 0 1px 3px rgba(47, 95, 51, 0.08);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.page-toc__list a:hover {
+  background: rgba(123, 211, 137, 0.22);
+  border-color: rgba(59, 111, 60, 0.38);
+  color: var(--color-green-dark);
+}
+
+.page-toc__list a:focus-visible {
+  outline: 2px solid rgba(59, 111, 60, 0.55);
+  outline-offset: 2px;
+}
+
+.back-to-top {
+  margin: 0;
+  text-align: center;
+}
+
+.back-to-top__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: 0.5em 1em 0.55em;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 650;
+  text-decoration: none;
+  color: var(--color-green-dark);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(59, 111, 60, 0.28);
+  box-shadow: 0 1px 4px rgba(47, 95, 51, 0.1);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.back-to-top__link:hover {
+  background: rgba(123, 211, 137, 0.24);
+  border-color: rgba(59, 111, 60, 0.42);
+}
+
+.back-to-top__link:focus-visible {
+  outline: 2px solid rgba(59, 111, 60, 0.55);
+  outline-offset: 3px;
+}
+
 .content-card {
   background: var(--glass-surface);
   border: 1px solid var(--glass-border);
